@@ -1,0 +1,11 @@
+2019-11-08 15:42:26.008  INFO 12800 --- [main] c.g.mybatisnx.MybatisnxApplicationTests  : Starting MybatisnxApplicationTests on DESKTOP-NOKHP58 with PID 12800 (started by Administrator in F:\javacode\mybatisnx)
+2019-11-08 15:42:26.011 DEBUG 12800 --- [main] c.g.mybatisnx.MybatisnxApplicationTests  : Running with Spring Boot v2.2.0.RELEASE, Spring v5.2.0.RELEASE
+2019-11-08 15:42:26.012  INFO 12800 --- [main] c.g.mybatisnx.MybatisnxApplicationTests  : No active profile set, falling back to default profiles: default
+2019-11-08 15:42:29.595  INFO 12800 --- [main] o.s.s.concurrent.ThreadPoolTaskExecutor  : Initializing ExecutorService 'applicationTaskExecutor'
+2019-11-08 15:42:30.480  INFO 12800 --- [main] c.g.mybatisnx.MybatisnxApplicationTests  : Started MybatisnxApplicationTests in 5.26 seconds (JVM running for 6.73)
+2019-11-08 15:42:30.817 TRACE 12800 --- [main] c.g.mybatisnx.MybatisnxApplicationTests  : 日志：trace
+2019-11-08 15:42:30.818 DEBUG 12800 --- [main] c.g.mybatisnx.MybatisnxApplicationTests  : debug
+2019-11-08 15:42:30.819  INFO 12800 --- [main] c.g.mybatisnx.MybatisnxApplicationTests  : info
+2019-11-08 15:42:30.819  WARN 12800 --- [main] c.g.mybatisnx.MybatisnxApplicationTests  : warn
+2019-11-08 15:42:30.819 ERROR 12800 --- [main] c.g.mybatisnx.MybatisnxApplicationTests  : error
+2019-11-08 15:42:30.859  INFO 12800 --- [SpringContextShutdownHook] o.s.s.concurrent.ThreadPoolTaskExecutor  : Shutting down ExecutorService 'applicationTaskExecutor'

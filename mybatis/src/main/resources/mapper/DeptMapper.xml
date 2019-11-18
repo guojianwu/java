@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="gjw.cn.mybatis01.dao.DeptDao">
+<!--     Dept getDeptById(Integer id);-->
+    <select id="getDeptById" resultType="gjw.cn.mybatis01.domain.Dept">
+        select * from dept where id=#{id}
+    </select>
+    <resultMap id="test" type="gjw.cn.mybatis01.domain.Dept">
+        <id column="id" property="id"></id>
+        <result column="name" property="name"></result>
+        <collection property="users" ofType="gjw.cn.mybatis01.domain.User">
+            <id column="u_id" property="id"></id>
+            <result column="username" property="username"></result>
+            <result column="password" property="password"></result>
+        </collection>
+    </resultMap>
+<!--    Dept getDeptByIdPlus(Integer id);-->
+    <select id="getDeptByIdPlus" resultMap="test">
+        	SELECT d.id id,d.`name` name, u.id u_id,u.username username,u.`password` password  FROM dept d LEFT JOIN user2 u on d.id=u.d_id WHERE d.id =#{id}
+    </select>
+</mapper>

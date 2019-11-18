@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gjw.securityjwt2.dao.RoleUserDao">
+    <insert id="save">
+        insert into sys_role_user(userId, roleId) values(#{userId}, #{roleId})
+    </insert>
+
+    <update id="updateByUserId">
+       update sys_role_user t
+       <set>
+           <if test="userId != null" >
+               roleId = #{roleId}
+           </if>
+       </set>
+       <where>
+           t.userId=#{userId}
+       </where>
+    </update>
+    <delete id="deleteByUserId">
+        delete from sys_role_user where userId=#{userId}
+    </delete>
+    <select id="findByRoleId" resultType="cn.gjw.securityjwt2.domain.SysRoleUser">
+        select * from sys_role_user where roleId=#{roleId}
+    </select>
+</mapper>

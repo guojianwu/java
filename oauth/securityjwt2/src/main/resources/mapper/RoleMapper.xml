@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gjw.securityjwt2.dao.RoleDao">
+
+    <resultMap id="myRole" type="cn.gjw.securityjwt2.dto.RoleDto">
+        <id column="id" property="id"></id>
+        <result column="name" property="name"></result>
+        <result column="description" property="description"></result>
+        <result column="createTime" property="createTime"></result>
+        <result  column="updateTime" property="updateTime"></result>
+        <collection column="permissionId" property="permissionIds"  ofType="long">
+            <result column="permissionId"></result>
+        </collection>
+
+    </resultMap>
+    <update id="update">
+        update sys_role
+        <set>
+            <if test="name !=null">
+                name = #{name},
+            </if>
+            <if test="description !=null">
+                description = #{description},
+            </if>
+            updateTime = now()
+        </set>
+        <where>
+            id=#{id}
+        </where>
+    </update>
+
+    <!--r  LEFT JOIN sys_role_permission rp ON r.id = rp.roleId WHERE r.id= #{id}-->
+    <select id="getRoleById" resultMap="myRole">
+        SELECT * FROM sys_role r  LEFT JOIN sys_role_permission rp ON r.id = rp.roleId WHERE r.id= #{id}
+    </select>
+    <select id="getAllRoles" resultType="cn.gjw.securityjwt2.domain.SysRole">
+        select * from sys_role
+    </select>
+
+
+    <select id="getRoleByPage" resultType="cn.gjw.securityjwt2.domain.SysRole">
+        SELECT * FROM sys_role
+        <where>
+            <if test="name != null">
+                `name` LIKE  CONCAT("%",#{name},"%")
+            </if>
+         </where>
+         LIMIT #{offset},#{pageSize}
+    </select>
+    <select id="getRoleConut" resultType="java.lang.Long">
+        SELECT COUNT(*) from sys_role
+        <where>
+            <if test="name != null">
+                `name` LIKE CONCAT("%",#{name},"%")
+            </if>
+        </where>
+    </select>
+
+    <insert id="save" useGeneratedKeys="true" keyProperty="id">
+        insert into sys_role
+        (name,description,createTime,updateTime)
+        values (#{name},#{description},now(),now())
+    </insert>
+
+    <delete id="deleteById">
+        delete from sys_role where id = #{id}
+    </delete>
+</mapper>
