@@ -148,7 +148,7 @@
                             localStorage.setItem('info',JSON.stringify(data));
                             this.$router.push('/');
                           }else{
-                            this.$message.error(res.data.message);
+                            this.$message.error(res.data.msg);
                           }
                         })
                     } else {

@@ -14,7 +14,12 @@
     </div>
     <div>
       <span class="text">确认密码：</span>
-      <el-input type="password"  v-model="params.repassword" placeholder="请输入用户名" style="width:300px;"></el-input>
+      <el-input
+        type="password"
+        v-model="params.repassword"
+        placeholder="请输入用户名"
+        style="width:300px;"
+      ></el-input>
     </div>
     <div>
       <span class="text">电话：</span>
@@ -74,7 +79,7 @@ export default {
       ],
       roleList: [],
       params: {
-        id:"",
+        id: "",
         username: "",
         password: "",
         repassword: "",
@@ -88,32 +93,34 @@ export default {
     };
   },
   mounted() {
-    var id=this.$route.query.id||"";
-    this.id=id;
-    if(id){
+    var id = this.$route.query.id || "";
+    this.id = id;
+    if (id) {
       this.userData(id);
     }
     this.getRoleList();
   },
   methods: {
-    userData(id){
-      this.$axios.get("/user/"+id).then(res => {
-        var { code,data } = res.data;
+    userData(id) {
+      this.$axios.get("/user/" + id).then(res => {
+        var { code, data } = res.data;
         if (code == 200) {
-          this.params=data;
+          this.params = data;
         }
       });
     },
     onSave() {
-      var params=this.params;
-      if(params.password!=params.repassword){
-         this.$message.error('两次密码输入不一致');
+      var params = this.params;
+      if (params.password != params.repassword) {
+        this.$message.error("两次密码输入不一致");
         return false;
       }
-      this.$axios.post("/user/save",this.params).then(res => {
-        var { code } = res.data;
+      this.$axios.post("/user/save", this.params).then(res => {
+        var { code,msg } = res.data;
         if (code == 200) {
           this.$router.go(-1);
+        } else {
+          this.$message.error(msg);
         }
       });
     },

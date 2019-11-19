@@ -53,8 +53,10 @@
         },
         computed:{
             username(){
-                let username = localStorage.getItem('ms_username');
-                return username ? username : this.name;
+                // let username = localStorage.getItem('ms_username');
+                // return username ? username : this.name;
+                var info=JSON.parse(localStorage.getItem("info")|| '');
+                return info.user.username
             }
         },
         methods:{

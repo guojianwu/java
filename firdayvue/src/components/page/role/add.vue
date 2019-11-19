@@ -102,9 +102,11 @@ export default {
     },
     onSave() {
       this.$axios.post("/role/save", this.params).then(res => {
-        var { code } = res.data;
+        var { code,msg } = res.data;
         if (code == 200) {
           this.$router.go(-1);
+        }else{
+          this.$message.error(msg);
         }
       });
     },
