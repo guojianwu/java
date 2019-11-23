@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper
+        PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="cn.gjw.firday.dao.AuthDao">
+    <resultMap id="myAuth" type="cn.gjw.firday.domain.auth.Auth">
+        <id column="id" property="id"></id>
+        <id column="username" property="username"></id>
+        <id column="password" property="password"></id>
+        <id column="nickname" property="nickname"></id>
+        <id column="headImgUrl" property="headImgUrl"></id>
+        <id column="phone" property="phone"></id>
+        <id column="telephone" property="telephone"></id>
+        <id column="birthday" property="birthday"></id>
+        <id column="sex" property="sex"></id>
+        <id column="status" property="status"></id>
+        <collection property="sysPermissions" ofType="cn.gjw.firday.domain.SysPermission">
+            <id column="permissionId" property="id"></id>
+            <result column="parentId" property="parentId"></result>
+            <result column="name" property="name"></result>
+            <result column="css" property="css"></result>
+            <result column="href" property="href"></result>
+            <result column="type" property="type"></result>
+            <result column="permission" property="permission"></result>
+            <result column="sort" property="sort"></result>
+        </collection>
+     </resultMap>
+    <select id="getUserByUsername" resultMap="myAuth">
+        SELECT
+            u.*,
+            p.*,
+	        p.id permissionId
+        FROM
+            sys_user u
+            LEFT JOIN sys_role_user ru ON u.id = ru.userId
+            LEFT JOIN sys_role r ON r.id = ru.roleId
+            LEFT JOIN sys_role_permission rp ON r.id = rp.roleId
+            LEFT JOIN sys_permission p ON p.id = rp.permissionId
+        WHERE
+            u.username =#{name}
+
+    </select>
+    <select id="getUserById" resultMap="myAuth">
+        SELECT
+            u.*,
+            p.* ,
+            p.id permissionId
+        FROM
+            sys_user u
+            LEFT JOIN sys_role_user ru ON u.id = ru.userId
+            LEFT JOIN sys_role r ON r.id = ru.roleId
+            LEFT JOIN sys_role_permission rp ON r.id = rp.roleId
+            LEFT JOIN sys_permission p ON p.id = rp.permissionId
+        WHERE
+            u.id =#{id}
+    </select>
+</mapper>
