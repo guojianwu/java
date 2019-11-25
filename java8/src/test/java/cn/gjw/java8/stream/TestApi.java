@@ -13,33 +13,33 @@ import java.util.Optional;
 
 @SpringBootTest
 public class TestApi {
-    List<Transaction> transactions =null;
+    List<Transaction> transactions = null;
 
     @Before
-    public void before(){
+    public void before() {
         Trader raoul = new Trader("Raoul", "剑桥");
         Trader mario = new Trader("Mario", "米兰");
         Trader alan = new Trader("Alan", "剑桥");
         Trader brian = new Trader("Brian", "剑桥");
 
-        transactions= Arrays.asList(
-                new Transaction(brian,2011,300),
-                new Transaction(raoul,2012,1000),
-                new Transaction(raoul,2011,400),
-                new Transaction(mario,2012,710),
-                new Transaction(mario,2012,700),
-                new Transaction(alan,2012,950)
+        transactions = Arrays.asList(
+                new Transaction(brian, 2011, 300),
+                new Transaction(raoul, 2012, 1000),
+                new Transaction(raoul, 2011, 400),
+                new Transaction(mario, 2012, 710),
+                new Transaction(mario, 2012, 700),
+                new Transaction(alan, 2012, 950)
         );
     }
 
     @Test
-    public void test(){
-        transactions.stream().filter(e->e.getYear().equals(2011)).forEach(System.out::println);
+    public void test() {
+        transactions.stream().filter(e -> e.getYear().equals(2011)).forEach(System.out::println);
 
-        transactions.stream().map(e->e.getTrader().getCity()).distinct().forEach(System.out::println);
+        transactions.stream().map(e -> e.getTrader().getCity()).distinct().forEach(System.out::println);
 
-        transactions.stream().filter(e->e.getTrader().getCity().equals("剑桥"))
-                .sorted((e1,e2)->e1.getTrader().getName().compareTo(e2.getTrader().getName()))
+        transactions.stream().filter(e -> e.getTrader().getCity().equals("剑桥"))
+                .sorted((e1, e2) -> e1.getTrader().getName().compareTo(e2.getTrader().getName()))
                 .forEach(System.out::println);
 
 

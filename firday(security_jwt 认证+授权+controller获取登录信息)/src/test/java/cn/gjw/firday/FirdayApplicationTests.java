@@ -26,20 +26,21 @@ class FirdayApplicationTests {
     @Autowired
     PermissionDao permissionDao;
 
-    private boolean isHas=false;
+    private boolean isHas = false;
+
     @Test
-    public void test2(){
+    public void test2() {
         List<SysPermission> datas = permissionDao.findAll();
         JSONArray array = new JSONArray();
 //        TreeUtils.isHas=false;
-        TreeUtils.setPermissionsTree(0,datas,array);
+        TreeUtils.setPermissionsTree(0, datas, array);
         System.out.println(array);
 
         List<SysPermission> sysPermissions = JSONObject.parseArray(array.toJSONString(), SysPermission.class);
         System.out.println(sysPermissions);
         System.out.println("===========================================================");
 
-        sysPermissions.stream().forEach(e-> System.out.println(e));
+        sysPermissions.stream().forEach(e -> System.out.println(e));
 
 //        System.out.println( TreeUtils.isHasChild(array,3));
     }
@@ -74,6 +75,7 @@ class FirdayApplicationTests {
 //        RoleDto roleById = roleService.getRoleById(12);
 //        System.out.println(roleById);
     }
+
     @Test
     void contextLoads() {
         PageTableRequest request = new PageTableRequest();
@@ -86,7 +88,7 @@ class FirdayApplicationTests {
     }
 
     @Test
-    public void test22(){
+    public void test22() {
 //        Results<Object> failure = Results.failure();
 //        String s = JSONArray.toJSON(failure).toString();
 //        System.out.println(s);

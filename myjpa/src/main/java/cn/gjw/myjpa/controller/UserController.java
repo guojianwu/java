@@ -16,15 +16,14 @@ public class UserController {
     UserRepository userRepository;
 
     @GetMapping("/user/{id}")
-    public Optional getUser(@PathVariable("id") Integer id){
+    public Optional getUser(@PathVariable("id") Integer id) {
         Optional<User> user = userRepository.findById(id);
         return user;
     }
 
 
-
     @GetMapping("/user")
-    public User insertUser(User user){
+    public User insertUser(User user) {
         User save = userRepository.save(user);
         return save;
     }

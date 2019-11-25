@@ -18,11 +18,11 @@ public class PageTableRequest implements Serializable {
     private Integer offset;
 
     public void countOffset() {
-		if (null == this.page || null == this.limit) {
+        if (null == this.page || null == this.limit) {
             this.offset = 0;
             return;
         }
-		this.offset = (this.page - 1) * this.limit;
+        this.offset = (this.page - 1) * this.limit;
     }
 
     @Override

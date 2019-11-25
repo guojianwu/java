@@ -11,16 +11,16 @@ module.exports = {
     assetsSubDirectory: 'static',
     assetsPublicPath: '/',
     proxyTable: {
-      '/api':{
-        target:'http://192.168.0.44:8888/api', // hanchengke
+      '/api': {
+        target: 'http://192.168.0.44:8888/api', // hanchengke
         changeOrigin: true,  // 接口是否跨域
         pathRewrite: {
-          '^/api':''
+          '^/api': ''
         }
       },
       '/ex': {
         target: 'https://www.easy-mock.com/mock/5ca2db5280609f548305ff7c',
-        changeOrigin:true,
+        changeOrigin: true,
         // pathRewrite: {
         //   '^/api': '/static/mock'
         // }

@@ -37,26 +37,27 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
     @Resource
     private JwtUtils jwtUtils;
+
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
         String token = httpServletRequest.getHeader(token_header);
 
-        if(StringUtils.isNotEmpty(token) && token.startsWith(bearer)){
-            token=token.substring(bearer.length());
-        }else {
-            token=null;
+        if (StringUtils.isNotEmpty(token) && token.startsWith(bearer)) {
+            token = token.substring(bearer.length());
+        } else {
+            token = null;
         }
 
-        if(token !=null){
+        if (token != null) {
             long userIdFromToken = jwtUtils.getUserIdFromToken(token);
 //            String usernameFromToken = jwtUtils.getUsernameFromToken(token);
 //            System.out.println(userIdFromToken);
 //            System.out.println(usernameFromToken);
 //            Auth userFromToken = jwtUtils.getUserFromToken(token);
 //            System.out.println(userIdFromToken);
-            if(userIdFromToken != 0){
+            if (userIdFromToken != 0) {
                 Auth userById = authDao.getUserById(userIdFromToken);
-                if(userById !=null){
+                if (userById != null) {
                     UserDetail userDetail = new UserDetail(userById);
                     UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userById, null, userDetail.getAuthorities());
                     authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(httpServletRequest));
@@ -70,6 +71,6 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
                 }
             }
         }
-        filterChain.doFilter(httpServletRequest,httpServletResponse);
+        filterChain.doFilter(httpServletRequest, httpServletResponse);
     }
 }

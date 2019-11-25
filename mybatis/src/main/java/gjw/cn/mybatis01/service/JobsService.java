@@ -5,5 +5,5 @@ import gjw.cn.mybatis01.domain.Jobs;
 import java.util.List;
 
 public interface JobsService {
-    public List<Jobs>  allJobs();
+    public List<Jobs> allJobs();
 }

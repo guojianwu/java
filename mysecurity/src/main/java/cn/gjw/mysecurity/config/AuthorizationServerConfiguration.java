@@ -1,4 +1,5 @@
 package cn.gjw.mysecurity.config;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.boot.jdbc.DataSourceBuilder;
@@ -22,7 +23,7 @@ import javax.sql.DataSource;
 @EnableAuthorizationServer
 public class AuthorizationServerConfiguration extends AuthorizationServerConfigurerAdapter {
 
-//    @Autowired
+    //    @Autowired
 //    BCryptPasswordEncoder passwordEncoder;
 //    @Bean
 //    @Primary
@@ -33,7 +34,8 @@ public class AuthorizationServerConfiguration extends AuthorizationServerConfigu
 //    }
     @Autowired
     private DataSource dataSource;
-        @Bean
+
+    @Bean
     public TokenStore tokenStore() {
         // 基于 JDBC 实现，令牌保存到数据
         return new JdbcTokenStore(dataSource);

@@ -6,7 +6,7 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
-@SuppressWarnings({ "unchecked", "rawtypes", "unused"})
+@SuppressWarnings({"unchecked", "rawtypes", "unused"})
 public class Util {
 
 //    private static org.apache.log4j.Logger log = Logger.getLogger(Util.class);
@@ -18,15 +18,14 @@ public class Util {
     /**
      * Sha1加密
      *
-     * @param String
-     *            str
+     * @param String str
      * @return String
      */
     public static String getSha1(String str) {
         if (str == null || str.length() == 0) {
             return null;
         }
-        char hexDigits[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
+        char hexDigits[] = {'0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f'};
         try {
             MessageDigest mdTemp = MessageDigest.getInstance("SHA1");
             mdTemp.update(str.getBytes("UTF-8"));

@@ -23,7 +23,7 @@ class MyjdbcApplicationTests {
     }
 
     @Test
-    public void test(){
+    public void test() {
         User userById = userDao.getUserById(1);
         System.out.println(userById);
     }

@@ -22,6 +22,7 @@ import java.util.List;
 public class MyUserDetailsService implements UserDetailsService {
     @Autowired
     AuthDao authDao;
+
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         System.out.println(s);
@@ -29,8 +30,8 @@ public class MyUserDetailsService implements UserDetailsService {
 
         System.out.println(userDetail);
 
-        if(userDetail == null){
-            throw new UsernameNotFoundException("没有找到username："+s);
+        if (userDetail == null) {
+            throw new UsernameNotFoundException("没有找到username：" + s);
         }
 //        Role role = authDao.findRoleByUserId(userDetail.getId());
 //        userDetail.setRole(role);
@@ -38,13 +39,13 @@ public class MyUserDetailsService implements UserDetailsService {
 
         List<GrantedAuthority> authorities = new ArrayList<>();
         userDetail.getSysPermissions().forEach(permission -> {
-            if(StringUtils.isNotEmpty(permission.getPermission())){
+            if (StringUtils.isNotEmpty(permission.getPermission())) {
                 SimpleGrantedAuthority grantedAuthority = new SimpleGrantedAuthority(permission.getPermission());
                 authorities.add(grantedAuthority);
             }
 
         });
         System.out.println(authorities);
-        return new User(userDetail.getUsername(),userDetail.getPassword(),authorities);
+        return new User(userDetail.getUsername(), userDetail.getPassword(), authorities);
     }
 }

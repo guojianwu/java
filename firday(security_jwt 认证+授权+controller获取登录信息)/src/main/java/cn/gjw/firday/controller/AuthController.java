@@ -15,7 +15,7 @@ public class AuthController {
     AuthService authService;
 
     @PostMapping("login")
-    public Object login(@RequestBody SysUser sysUser){
-       return authService.login(sysUser.getUsername(),sysUser.getPassword());
+    public Object login(@RequestBody SysUser sysUser) {
+        return authService.login(sysUser.getUsername(), sysUser.getPassword());
     }
 }

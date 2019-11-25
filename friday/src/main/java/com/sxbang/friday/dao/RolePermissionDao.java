@@ -13,7 +13,7 @@ public interface RolePermissionDao {
     @Delete("delete from sys_role_permission where permissionId = #{permissionId}")
     int delete(RolePermission rolePermission);
 
-    int save(@Param("roleId")Integer id, @Param("permissionIds") List<Long> permissionIds);
+    int save(@Param("roleId") Integer id, @Param("permissionIds") List<Long> permissionIds);
 
     @Delete("delete from sys_role_permission where roleId = #{roleId}")
     int deleteRolePermission(Integer roleId);

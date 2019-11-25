@@ -2,7 +2,9 @@ package cn.gjw.mybatisnx.dao;
 
 import cn.gjw.mybatisnx.entity.Dept;
 import cn.gjw.mybatisnx.entity.DeptExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface DeptMapper {

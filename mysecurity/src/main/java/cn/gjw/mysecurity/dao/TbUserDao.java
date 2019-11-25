@@ -6,6 +6,6 @@ import org.springframework.stereotype.Service;
 
 @Repository
 public interface TbUserDao {
-   public TbUser getUserByName(String name);
+    public TbUser getUserByName(String name);
 
 }

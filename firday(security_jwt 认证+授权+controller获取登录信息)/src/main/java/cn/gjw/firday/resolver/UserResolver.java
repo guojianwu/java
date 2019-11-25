@@ -34,12 +34,12 @@ public class UserResolver implements HandlerMethodArgumentResolver {
     public Object resolveArgument(MethodParameter methodParameter, ModelAndViewContainer modelAndViewContainer, NativeWebRequest nativeWebRequest, WebDataBinderFactory webDataBinderFactory) throws Exception {
 //        String token = request.getHeader("token");
         String token = nativeWebRequest.getHeader(token_header);
-        if(StringUtils.isNotEmpty(token) && token.startsWith(bearer)){
-            token=token.substring(bearer.length());
-        }else {
-            token=null;
+        if (StringUtils.isNotEmpty(token) && token.startsWith(bearer)) {
+            token = token.substring(bearer.length());
+        } else {
+            token = null;
         }
-        if(StringUtils.isNotEmpty(token)){
+        if (StringUtils.isNotEmpty(token)) {
             long userIdFromToken = jwtUtils.getUserIdFromToken(token);
             return userIdFromToken;
         }

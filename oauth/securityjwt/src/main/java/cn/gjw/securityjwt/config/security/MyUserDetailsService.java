@@ -16,11 +16,12 @@ import org.springframework.stereotype.Component;
 public class MyUserDetailsService implements UserDetailsService {
     @Autowired
     AuthDao authDao;
+
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         UserDetail userDetail = authDao.findByUsername(s);
-        if(userDetail == null){
-            throw new UsernameNotFoundException("没有找到username："+s);
+        if (userDetail == null) {
+            throw new UsernameNotFoundException("没有找到username：" + s);
         }
         Role role = authDao.findRoleByUserId(userDetail.getId());
         userDetail.setRole(role);

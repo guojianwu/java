@@ -3,7 +3,7 @@ package cn.gjw.httpclient.config;
 import org.apache.http.conn.HttpClientConnectionManager;
 import org.springframework.beans.factory.annotation.Autowired;
 
-public class IdleConnectionEvictor extends Thread{
+public class IdleConnectionEvictor extends Thread {
 
     @Autowired
     private HttpClientConnectionManager connMgr;

@@ -15,7 +15,8 @@ import javax.annotation.Resource;
 public class FridayApplicationTests {
 
     @Resource
-    UserDao dao ;
+    UserDao dao;
+
     @Test
     public void contextLoads() {
 //        SysUser user = new SysUser();

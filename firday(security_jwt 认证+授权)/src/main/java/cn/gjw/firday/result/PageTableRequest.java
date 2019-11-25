@@ -21,11 +21,11 @@ public class PageTableRequest implements Serializable {
     private String name;
 
     public void countOffset() {
-		if (null == this.pageNum || null == this.pageSize) {
+        if (null == this.pageNum || null == this.pageSize) {
             this.offset = 0;
             return;
         }
-		this.offset = (this.pageNum - 1) * this.pageSize;
+        this.offset = (this.pageNum - 1) * this.pageSize;
     }
 
 

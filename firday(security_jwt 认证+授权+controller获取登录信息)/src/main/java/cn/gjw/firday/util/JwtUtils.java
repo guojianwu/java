@@ -65,7 +65,8 @@ public class JwtUtils {
         }
         return userId;
     }
-//    public Auth getUserFromToken(String token) {
+
+    //    public Auth getUserFromToken(String token) {
 //        Auth auth=null;
 //        try {
 //            final Claims claims = getClaimsFromToken(token);
@@ -172,6 +173,7 @@ public class JwtUtils {
         }
         return false;
     }
+
     private Claims getClaimsFromToken(String token) {
         Claims claims;
         try {
@@ -220,7 +222,6 @@ public class JwtUtils {
     private String generateRefreshToken(String subject, Map<String, Object> claims) {
         return generateToken(subject, claims, refresh_token_expiration);
     }
-
 
 
     private String generateToken(String subject, Map<String, Object> claims, long expiration) {

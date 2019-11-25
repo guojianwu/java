@@ -24,34 +24,34 @@
             <result column="permission" property="permission"></result>
             <result column="sort" property="sort"></result>
         </collection>
-     </resultMap>
+    </resultMap>
     <select id="getUserByUsername" resultMap="myAuth">
         SELECT
-            u.*,
-            p.*,
-	        p.id permissionId
+        u.*,
+        p.*,
+        p.id permissionId
         FROM
-            sys_user u
-            LEFT JOIN sys_role_user ru ON u.id = ru.userId
-            LEFT JOIN sys_role r ON r.id = ru.roleId
-            LEFT JOIN sys_role_permission rp ON r.id = rp.roleId
-            LEFT JOIN sys_permission p ON p.id = rp.permissionId
+        sys_user u
+        LEFT JOIN sys_role_user ru ON u.id = ru.userId
+        LEFT JOIN sys_role r ON r.id = ru.roleId
+        LEFT JOIN sys_role_permission rp ON r.id = rp.roleId
+        LEFT JOIN sys_permission p ON p.id = rp.permissionId
         WHERE
-            u.username =#{name}
+        u.username =#{name}
 
     </select>
     <select id="getUserById" resultMap="myAuth">
         SELECT
-            u.*,
-            p.* ,
-            p.id permissionId
+        u.*,
+        p.* ,
+        p.id permissionId
         FROM
-            sys_user u
-            LEFT JOIN sys_role_user ru ON u.id = ru.userId
-            LEFT JOIN sys_role r ON r.id = ru.roleId
-            LEFT JOIN sys_role_permission rp ON r.id = rp.roleId
-            LEFT JOIN sys_permission p ON p.id = rp.permissionId
+        sys_user u
+        LEFT JOIN sys_role_user ru ON u.id = ru.userId
+        LEFT JOIN sys_role r ON r.id = ru.roleId
+        LEFT JOIN sys_role_permission rp ON r.id = rp.roleId
+        LEFT JOIN sys_permission p ON p.id = rp.permissionId
         WHERE
-            u.id =#{id}
+        u.id =#{id}
     </select>
 </mapper>

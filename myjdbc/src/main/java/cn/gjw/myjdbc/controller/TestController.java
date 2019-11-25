@@ -13,7 +13,7 @@ public class TestController {
     UserDao userDao;
 
     @GetMapping("/test")
-    public User test(){
+    public User test() {
         User user = userDao.getUserById(1);
         System.out.println(user);
         return user;

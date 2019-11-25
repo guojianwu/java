@@ -4,14 +4,14 @@ function Menu(eleId, userId) {
     this.permission = [];
     this.menuItemRight = '<i class="iconfont nav_right">&#xe697;</i>';
     this.menuItemTemplate = ""
-        +'<li>'
+        + '<li>'
         + '	<a {{menu_level}}href="{{menu_href}}">'
         + '		<i class="iconfont">{{men_icon}}</i>'
         + '		<cite>{{menu_name}}</cite>'
         + '		{{menu_right}}'
         + '	</a>'
         + '	{{sub_menu}}'
-        +'</li>';
+        + '</li>';
     this.subMenu = '<ul class="sub-menu">'
         + '	{{sub_menu_list}}'
         + '</ul>';
@@ -23,7 +23,7 @@ Menu.prototype = {
         userId = userId || this.userId;
         var _this = this;
         _this.getMenuData(userId).then(function (res) {
-            var htmlStr = _this.generateMenu('',_this.permission);
+            var htmlStr = _this.generateMenu('', _this.permission);
             $("#" + eleId).html(htmlStr);
         });
         // _this.menuListen();
@@ -42,12 +42,12 @@ Menu.prototype = {
                         return;
                     }
 
-                    if(res.data.length == 0){
+                    if (res.data.length == 0) {
                         $('.left-nav').animate({left: '-221px'}, 100);
                         $('.page-content').animate({left: '0px'}, 100);
                         $('.page-content-bg').hide();
                         $('.container .left_open i').hide()
-                        return ;
+                        return;
                     }
                     _this.permission = res.data;
 
@@ -62,11 +62,11 @@ Menu.prototype = {
             }
         );
     },
-    generateMenu: function (eleId,data) {
+    generateMenu: function (eleId, data) {
         var htmlStr = "";
         var _this = this;
-        if(data.length == 0){
-            return ;
+        if (data.length == 0) {
+            return;
         }
         //var userPermission = localStorage.permission;
         var parentList = [];
@@ -86,7 +86,7 @@ Menu.prototype = {
             }
             var child = "";
             if (item.child) {
-                var childList = _this.generateMenu(eleId,item.child);
+                var childList = _this.generateMenu(eleId, item.child);
                 if (childList) {
                     child = _this.subMenu;
                     child = child.replace(/{{sub_menu_list}}/, childList);
@@ -105,17 +105,17 @@ Menu.prototype = {
         });
         return htmlStr;
     },
-    menuListen: function() {
+    menuListen: function () {
         $('.left-nav #nav').unbind();
-        $('.left-nav #nav').on('click', 'li', function(event) {
+        $('.left-nav #nav').on('click', 'li', function (event) {
             var index = $('.left-nav #nav li').index($(this));
 
-            if($(this).children('.sub-menu').length){
-                if($(this).hasClass('open')){
+            if ($(this).children('.sub-menu').length) {
+                if ($(this).hasClass('open')) {
 
-                    if($(this).parent().hasClass('sub-menu')){
+                    if ($(this).parent().hasClass('sub-menu')) {
                         deleteCookie('left_menu_son');
-                    }else{
+                    } else {
                         deleteCookie('left_menu_father');
                     }
 
@@ -123,13 +123,13 @@ Menu.prototype = {
                     $(this).find('.nav_right').html('&#xe697;');
                     $(this).children('.sub-menu').stop().slideUp();
                     $(this).siblings().children('.sub-menu').slideUp();
-                }else{
+                } else {
 
 
-                    if($(this).parent().hasClass('sub-menu')){
-                        setCookie('left_menu_son',index);
-                    }else{
-                        setCookie('left_menu_father',index);
+                    if ($(this).parent().hasClass('sub-menu')) {
+                        setCookie('left_menu_son', index);
+                    } else {
+                        setCookie('left_menu_father', index);
                     }
 
                     $(this).addClass('open');
@@ -139,47 +139,48 @@ Menu.prototype = {
                     $(this).siblings().find('.nav_right').html('&#xe697;');
                     $(this).siblings().removeClass('open');
                 }
-            }else{
+            } else {
 
                 var url = $(this).children('a').attr('_href');
                 var title = $(this).find('cite').html();
                 // var index  = $('.left-nav #nav li').index($(this));
 
-                var is_refresh = $(this).attr('date-refresh')?true:false;
+                var is_refresh = $(this).attr('date-refresh') ? true : false;
 
-                for (var i = 0; i <$('.x-iframe').length; i++) {
-                    if($('.x-iframe').eq(i).attr('tab-id')==index+1){
-                        tab.tabChange(index+1);
+                for (var i = 0; i < $('.x-iframe').length; i++) {
+                    if ($('.x-iframe').eq(i).attr('tab-id') == index + 1) {
+                        tab.tabChange(index + 1);
                         event.stopPropagation();
 
-                        if(is_refresh)
-                            $('.x-iframe').eq(i).attr("src",$('.x-iframe').eq(i).attr('src'));
+                        if (is_refresh)
+                            $('.x-iframe').eq(i).attr("src", $('.x-iframe').eq(i).attr('src'));
 
                         return;
                     }
-                };
+                }
+                ;
 
-                if(getCookie('tab_list')){
+                if (getCookie('tab_list')) {
                     tab_list = getCookie('tab_list').split(',');
-                }else{
+                } else {
                     tab_list = [];
                 }
 
                 var is_exist = false;
 
                 for (var i in tab_list) {
-                    if(tab_list[i]==index)
+                    if (tab_list[i] == index)
                         is_exist = true;
                 }
 
-                if(!is_exist){
+                if (!is_exist) {
                     tab_list.push(index);
                 }
 
-                setCookie('tab_list',tab_list);
+                setCookie('tab_list', tab_list);
 
-                tab.tabAdd(title,url,index+1);
-                tab.tabChange(index+1);
+                tab.tabAdd(title, url, index + 1);
+                tab.tabChange(index + 1);
             }
 
             event.stopPropagation();
@@ -187,11 +188,11 @@ Menu.prototype = {
         })
 
         // 左侧菜单记忆功能
-        if(getCookie('left_menu_father')!=null){
+        if (getCookie('left_menu_father') != null) {
             $('.left-nav #nav li').eq(getCookie('left_menu_father')).click();
         }
 
-        if(getCookie('left_menu_son')!=null){
+        if (getCookie('left_menu_son') != null) {
             $('.left-nav #nav li').eq(getCookie('left_menu_son')).click();
         }
     }

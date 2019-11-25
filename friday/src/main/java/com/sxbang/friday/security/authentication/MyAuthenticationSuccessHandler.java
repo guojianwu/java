@@ -22,6 +22,7 @@ public class MyAuthenticationSuccessHandler extends SavedRequestAwareAuthenticat
 
     @Autowired
     private ObjectMapper objectMapper;
+
     @Override
     public void onAuthenticationSuccess(HttpServletRequest request, HttpServletResponse response, Authentication authentication) throws IOException, ServletException {
         log.info("登陆成功");

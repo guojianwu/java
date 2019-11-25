@@ -19,9 +19,9 @@ public class RoleUserController {
 
     @PostMapping("/getRoleUserByUserId")
     @ApiOperation(value = "获取当前用户角色", notes = "获取当前用户角色")//描述
-    @ApiImplicitParam(name = "userId",value = "用户Id", required = true)
+    @ApiImplicitParam(name = "userId", value = "用户Id", required = true)
     public Results getRoleUserByUserId(Integer userId) {
-        log.info("getRoleUserByUserId（"+userId+"）");
+        log.info("getRoleUserByUserId（" + userId + "）");
         return roleUserService.getSysRoleUserByUserId(userId);
     }
 }

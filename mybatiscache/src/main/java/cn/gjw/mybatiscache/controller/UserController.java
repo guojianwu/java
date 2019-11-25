@@ -15,7 +15,7 @@ public class UserController {
     UserService userService;
 
     @GetMapping("/user/{id}")
-    public User getUserById(@PathVariable("id") Integer id){
+    public User getUserById(@PathVariable("id") Integer id) {
         User user = userService.getUserById(id);
         return user;
     }
@@ -29,7 +29,7 @@ public class UserController {
         InputStream ins = null;
         try {
             ins = multipartFile.getInputStream();
-            file = new File("src/main/resources/static/imgs/"+multipartFile.getOriginalFilename());
+            file = new File("src/main/resources/static/imgs/" + multipartFile.getOriginalFilename());
             OutputStream os = new FileOutputStream(file);
             int bytesRead = 0;
             byte[] buffer = new byte[8192];

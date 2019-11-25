@@ -9,8 +9,8 @@
         <result column="name" property="name"></result>
         <result column="description" property="description"></result>
         <result column="createTime" property="createTime"></result>
-        <result  column="updateTime" property="updateTime"></result>
-        <collection column="permissionId" property="permissionIds"  ofType="long">
+        <result column="updateTime" property="updateTime"></result>
+        <collection column="permissionId" property="permissionIds" ofType="long">
             <result column="permissionId"></result>
         </collection>
 
@@ -33,7 +33,7 @@
 
     <!--r  LEFT JOIN sys_role_permission rp ON r.id = rp.roleId WHERE r.id= #{id}-->
     <select id="getRoleById" resultMap="myRole">
-        SELECT * FROM sys_role r  LEFT JOIN sys_role_permission rp ON r.id = rp.roleId WHERE r.id= #{id}
+        SELECT * FROM sys_role r LEFT JOIN sys_role_permission rp ON r.id = rp.roleId WHERE r.id= #{id}
     </select>
     <select id="getAllRoles" resultType="cn.gjw.firday.domain.SysRole">
         select * from sys_role
@@ -44,10 +44,10 @@
         SELECT * FROM sys_role
         <where>
             <if test="name != null">
-                `name` LIKE  CONCAT("%",#{name},"%")
+                `name` LIKE CONCAT("%",#{name},"%")
             </if>
-         </where>
-         LIMIT #{offset},#{pageSize}
+        </where>
+        LIMIT #{offset},#{pageSize}
     </select>
     <select id="getRoleConut" resultType="java.lang.Long">
         SELECT COUNT(*) from sys_role

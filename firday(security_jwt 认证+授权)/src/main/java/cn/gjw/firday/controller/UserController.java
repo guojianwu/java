@@ -30,41 +30,41 @@ public class UserController {
     PasswordEncoder passwordEncoder;
 
     @GetMapping("/list")
-    public Results<SysUser> getUsers(PageTableRequest request){
+    public Results<SysUser> getUsers(PageTableRequest request) {
         request.countOffset();
-        return userService.getAllUsersByPage(request.getName() ,request.getOffset(), request.getPageSize());
+        return userService.getAllUsersByPage(request.getName(), request.getOffset(), request.getPageSize());
     }
 
     @GetMapping("/{id}")
-    public Results getUserById(@PathVariable("id") Integer id){
+    public Results getUserById(@PathVariable("id") Integer id) {
 
-        return  userService.getUserById(id);
+        return userService.getUserById(id);
     }
 
 
     @PostMapping("/save")
     @PreAuthorize("hasAnyAuthority('sys:user:add')")
-    public Results save(@RequestBody  UserDto userDto) {
+    public Results save(@RequestBody UserDto userDto) {
         System.out.println(userDto);
-        if(userDto.getPassword()!=null){
+        if (userDto.getPassword() != null) {
 //            userDto.setPassword(MD5.crypt(userDto.getPassword()));
             userDto.setPassword(passwordEncoder.encode(userDto.getPassword()));
         }
-        if(userDto.getId() != null){ //更新
-            return  userService.updateUserById(userDto);
-        }else{ //保存
+        if (userDto.getId() != null) { //更新
+            return userService.updateUserById(userDto);
+        } else { //保存
             userDto.setStatus(1);
-            return  userService.save(userDto);
+            return userService.save(userDto);
         }
     }
 
 
     @PostMapping("/delete")
     @PreAuthorize("hasAnyAuthority('sys:user:del')")
-    public Results deleteUser(@RequestBody  UserDto userDto){
+    public Results deleteUser(@RequestBody UserDto userDto) {
         int id = userDto.getId().intValue();
         System.out.println(id);
-        return  userService.deleteUserById(id);
+        return userService.deleteUserById(id);
     }
 
 //    String pattern = "yyyy-MM-dd";

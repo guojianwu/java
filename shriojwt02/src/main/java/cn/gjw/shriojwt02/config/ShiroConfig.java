@@ -17,7 +17,7 @@ import java.util.Map;
 public class ShiroConfig {
 
     @Bean("securityManager")
-    public SecurityManager securityManager(OAuth2Realm oAuth2Realm){
+    public SecurityManager securityManager(OAuth2Realm oAuth2Realm) {
         DefaultWebSecurityManager securityManager = new DefaultWebSecurityManager();
         securityManager.setRealm(oAuth2Realm);
         securityManager.setRememberMeManager(null);
@@ -25,7 +25,7 @@ public class ShiroConfig {
     }
 
     @Bean("shiroFilter")
-    public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager){
+    public ShiroFilterFactoryBean shiroFilter(SecurityManager securityManager) {
         ShiroFilterFactoryBean shiroFilter = new ShiroFilterFactoryBean();
         shiroFilter.setSecurityManager(securityManager);
 

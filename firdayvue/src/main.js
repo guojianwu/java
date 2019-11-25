@@ -12,45 +12,56 @@ import axios from 'axios'
 
 Vue.config.productionTip = false
 Vue.use(ElementUI, {
-    size: 'small'
+  size: 'small'
 });
 Vue.prototype.$axios = axios;
 // Vue.prototype.HOST="/api";
 axios.defaults.baseURL = '/api';
 
-var info =localStorage.getItem('info')==""? "":JSON.parse(localStorage.getItem('info'));
-var token=info&&info.token?"Bearer "+info.token:'';
-if(token==""){
+var info = localStorage.getItem('info') == "" ? "" : JSON.parse(localStorage.getItem('info'));
+var token = info && info.token ? "Bearer " + info.token : '';
+if (token == "") {
   router.replace({
-    path:'/login'
+    path: '/login'
   })
 }
 axios.defaults.headers.common['token'] = token;
-axios.interceptors.response.use((response) => {
-	if(response.data.code==401){
-		router.replace({
-			path:'/login'
-		})
-	}
-	return response;
-},(error) =>{
-});
+axios.interceptors.response.use((response) = > {
+  if(response.data.code == 401
+)
+{
+  router.replace({
+    path: '/login'
+  })
+}
+return response;
+},
+(error) =
+>
+{
+}
+)
+;
 
 
-router.beforeEach((to, from, next) => {
+router.beforeEach((to, from, next) = > {
 
-  if (to.matched.some(record => record.meta.unRequiresAuth)) {
-    next()
+  if(to.matched.some(record = > record.meta.unRequiresAuth
+))
+{
+  next()
+}
+else
+{
+  var info = localStorage.getItem('info') == "" ? "" : JSON.parse(localStorage.getItem('info'));
+  if (info && info.token) {
+    next();
   } else {
-    var info = localStorage.getItem('info') == "" ? "" : JSON.parse(localStorage.getItem('info'));
-    if (info && info.token) {
-      next();
-    } else {
-      next({
-        path: '/login'
-      })
-    }
+    next({
+      path: '/login'
+    })
   }
+}
 
 
 })
@@ -94,6 +105,6 @@ router.beforeEach((to, from, next) => {
 new Vue({
   el: '#app',
   router,
-  components: { App },
+  components: {App},
   template: '<App/>'
 })

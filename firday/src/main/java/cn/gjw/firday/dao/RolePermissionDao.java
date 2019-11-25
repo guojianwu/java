@@ -8,5 +8,6 @@ import java.util.List;
 @Repository
 public interface RolePermissionDao {
     int saveList(@Param("roleId") Integer id, @Param("permissionIds") List<Long> permissionIds);
+
     int deleteByRoleId(Integer roleId);
 }

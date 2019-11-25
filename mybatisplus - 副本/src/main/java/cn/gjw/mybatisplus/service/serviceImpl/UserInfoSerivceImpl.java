@@ -14,8 +14,9 @@ import org.springframework.transaction.annotation.Transactional;
 public class UserInfoSerivceImpl extends ServiceImpl<UserInfoDao, UserInfoEntity> implements UserInfoService {
     @Autowired
     UserInfoDao userInfoDao;
+
     @Override
     public IPage<UserInfoEntity> selectUserInfoByGtFraction(IPage<UserInfoEntity> page, Long fraction) {
-        return userInfoDao.selectUserInfoByGtFraction(page,fraction);
+        return userInfoDao.selectUserInfoByGtFraction(page, fraction);
     }
 }

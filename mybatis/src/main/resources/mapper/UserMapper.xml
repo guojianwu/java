@@ -5,15 +5,15 @@
 <mapper namespace="gjw.cn.mybatis01.dao.UserDao">
 
     <select id="allUser" resultType="gjw.cn.mybatis01.domain.User">
-            select  * from user
-        </select>
+        select * from user
+    </select>
 
     <insert id="addUser" useGeneratedKeys="true" keyProperty="id" parameterType="gjw.cn.mybatis01.domain.User">
         insert into user2 (username,password)
-        values  (#{username},#{password})
+        values (#{username},#{password})
     </insert>
 
-<!--      List<User> getUserByMap();-->
+    <!--      List<User> getUserByMap();-->
     <resultMap id="test" type="gjw.cn.mybatis01.domain.User">
         <id column="id" property="id"></id>
         <result column="password" property="password"></result>
@@ -22,7 +22,7 @@
     <select id="getUserByMap" resultMap="test">
         select * from user2 where id=#{id} and username=#{username}
     </select>
-<!--List<User> getUserById(Integer id);-->
+    <!--List<User> getUserById(Integer id);-->
     <resultMap id="test2" type="gjw.cn.mybatis01.domain.User">
         <id column="id" property="id"></id>
         <result column="username" property="username"></result>
@@ -30,34 +30,34 @@
         <association property="dept" select="gjw.cn.mybatis01.dao.DeptDao.getDeptById" column="d_id">
         </association>
     </resultMap>
-<!--    <resultMap id="test2" type="gjw.cn.mybatis01.domain.User">-->
-<!--        <id column="id" property="id"></id>-->
-<!--        <result column="username" property="username"></result>-->
-<!--        <result column="password" property="password"></result>-->
-<!--        <result column="d_id" property="dept.id"></result>-->
-<!--        <result column="d_name" property="dept.name"></result>-->
-<!--    </resultMap>-->
+    <!--    <resultMap id="test2" type="gjw.cn.mybatis01.domain.User">-->
+    <!--        <id column="id" property="id"></id>-->
+    <!--        <result column="username" property="username"></result>-->
+    <!--        <result column="password" property="password"></result>-->
+    <!--        <result column="d_id" property="dept.id"></result>-->
+    <!--        <result column="d_name" property="dept.name"></result>-->
+    <!--    </resultMap>-->
 
     <select id="getUserById" resultMap="test2">
-       SELECT
-            u.id,
-            u.username,
-            u.`password`,
-            d.id d_id,
-            d.`name` d_name
-       FROM
-            user2 u
-            LEFT JOIN dept d ON u.d_id = d.id
+        SELECT
+        u.id,
+        u.username,
+        u.`password`,
+        d.id d_id,
+        d.`name` d_name
+        FROM
+        user2 u
+        LEFT JOIN dept d ON u.d_id = d.id
         ORDER BY
-            u.id;
+        u.id;
     </select>
 
-<!--        List<User> getUserByIf(User user);-->
+    <!--        List<User> getUserByIf(User user);-->
     <select id="getUserByIf" resultType="gjw.cn.mybatis01.domain.User">
         SELECT
-            *
+        *
         FROM
-            user2
+        user2
         <where>
             <if test="id!=null">
                 id = #{id}
@@ -68,9 +68,7 @@
         </where>
 
 
-
     </select>
-
 
 
 </mapper>

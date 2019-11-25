@@ -35,23 +35,24 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
     @Resource
     private JwtUtils jwtUtils;
+
     @Override
     protected void doFilterInternal(HttpServletRequest httpServletRequest, HttpServletResponse httpServletResponse, FilterChain filterChain) throws ServletException, IOException {
         String token = httpServletRequest.getHeader(token_header);
 
-        if(StringUtils.isNotEmpty(token) && token.startsWith(bearer)){
-            token=token.substring(bearer.length());
-        }else {
-            token=null;
+        if (StringUtils.isNotEmpty(token) && token.startsWith(bearer)) {
+            token = token.substring(bearer.length());
+        } else {
+            token = null;
         }
 
-        if(token !=null){
+        if (token != null) {
             long userIdFromToken = jwtUtils.getUserIdFromToken(token);
-            if(userIdFromToken!=0){
+            if (userIdFromToken != 0) {
                 UserDetail userById = authDao.getUserById(userIdFromToken);
-                if(userById !=null){
+                if (userById != null) {
                     UserDetail userDetail = jwtUtils.getUserFromToken(token);
-                    if(jwtUtils.validateToken(token,userDetail)){
+                    if (jwtUtils.validateToken(token, userDetail)) {
                         UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetail, null, userDetail.getAuthorities());
                         authentication.setDetails(new WebAuthenticationDetailsSource().buildDetails(httpServletRequest));
                         SecurityContextHolder.getContext().setAuthentication(authentication);
@@ -59,6 +60,6 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
                 }
             }
         }
-        filterChain.doFilter(httpServletRequest,httpServletResponse);
+        filterChain.doFilter(httpServletRequest, httpServletResponse);
     }
 }

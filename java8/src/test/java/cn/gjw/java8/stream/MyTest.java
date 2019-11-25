@@ -10,18 +10,17 @@ import java.util.stream.Collectors;
 @SpringBootTest
 public class MyTest {
     List<Employee> employees = Arrays.asList(
-            new Employee("张三",18,99999.99, Employee.Status.BUSY),
-            new Employee("李四",38,555.99, Employee.Status.BUSY),
-            new Employee("王五",50,6666.66, Employee.Status.VOCATION),
-            new Employee("赵六",16,3333.33, Employee.Status.FREE),
-            new Employee("田七",8,77777.77, Employee.Status.VOCATION),
-            new Employee("田七",8,77777.77, Employee.Status.VOCATION)
+            new Employee("张三", 18, 99999.99, Employee.Status.BUSY),
+            new Employee("李四", 38, 555.99, Employee.Status.BUSY),
+            new Employee("王五", 50, 6666.66, Employee.Status.VOCATION),
+            new Employee("赵六", 16, 3333.33, Employee.Status.FREE),
+            new Employee("田七", 8, 77777.77, Employee.Status.VOCATION),
+            new Employee("田七", 8, 77777.77, Employee.Status.VOCATION)
     );
 
 
-
     @Test
-    public void test8(){
+    public void test8() {
         boolean b = employees.stream().allMatch((e) -> e.getStatus().equals(Employee.Status.BUSY));
         System.out.println(b);
         boolean b1 = employees.stream().anyMatch((e) -> e.getStatus().equals(Employee.Status.FREE));
@@ -47,12 +46,12 @@ public class MyTest {
         Optional<Employee> min = employees.stream().min((e1, e2) -> Double.compare(e1.getSalary(), e2.getSalary()));
         System.out.println(min.get());
 
-        List<Integer> list = Arrays.asList(1,2,3,4,5,6,7,8,9,10);
+        List<Integer> list = Arrays.asList(1, 2, 3, 4, 5, 6, 7, 8, 9, 10);
         Integer reduce = list.stream().reduce(0, (x, y) -> x + y);
         System.out.println(reduce);
 
 
-        Double reduce1 = employees.stream().map(e -> e.getSalary()).reduce( 0.0, (x, y) -> x + y);
+        Double reduce1 = employees.stream().map(e -> e.getSalary()).reduce(0.0, (x, y) -> x + y);
         System.out.println(reduce1);
 
         Optional<Double> reduce2 = employees.stream().map(Employee::getSalary).reduce(Double::sum);
@@ -96,27 +95,26 @@ public class MyTest {
         System.out.println(collect9.getMax());
 
 
-        String collect10 = employees.stream().map(Employee::getName).collect(Collectors.joining(",","<<",">>"));
+        String collect10 = employees.stream().map(Employee::getName).collect(Collectors.joining(",", "<<", ">>"));
         System.out.println(collect10);
     }
 
     @Test
-    public void test(){
-        employees.stream().map((item)->{
+    public void test() {
+        employees.stream().map((item) -> {
             System.out.println(item);
             return item;
-        }).forEach(item->{
+        }).forEach(item -> {
             System.out.println(item);
         });
 
     }
 
 
-
     @Test
-    public  void test3(){
+    public void test3() {
         List<Integer> list = Arrays.asList(1, 2, 3, 4, 5);
-        list.stream().map(e->e*e).forEach(e-> System.out.println(e));
+        list.stream().map(e -> e * e).forEach(e -> System.out.println(e));
 
         Optional<Integer> reduce = employees.stream().map(e -> 1).reduce(Integer::sum);
         System.out.println(reduce);

@@ -22,15 +22,14 @@ public class TestController {
     UserService userService;
 
 
-
     @GetMapping("/list")
-    public Result test(){
+    public Result test() {
         List<User> list = userService.list();
         return ResultGenerator.getSuccessResult(list);
     }
 
     @GetMapping("/page")
-    public Result page(Long pageNum,Long pageSize){
+    public Result page(Long pageNum, Long pageSize) {
         Page<User> page = new Page<>();
         page.setCurrent(pageNum);
         page.setSize(pageSize);
@@ -45,29 +44,29 @@ public class TestController {
 
 
     @GetMapping("/listByIds")
-    public Result listByIds(){
+    public Result listByIds() {
         Collection<User> users = userService.listByIds(Arrays.asList(1, 3));
         return ResultGenerator.getSuccessResult(users);
     }
 
     @GetMapping("/listByMap")
-    public Result listByMap(){
+    public Result listByMap() {
         HashMap<String, Object> map = new HashMap<>();
-        map.put("name","Jone");
+        map.put("name", "Jone");
         Collection<User> users = userService.listByMap(map);
         return ResultGenerator.getSuccessResult(users);
     }
 
     @GetMapping("/getOne")
-    public Result getOne(){
+    public Result getOne() {
         QueryWrapper<User> wrapper = new QueryWrapper<>();
-        wrapper.eq("id",1);
+        wrapper.eq("id", 1);
         User one = userService.getOne(wrapper);
         return ResultGenerator.getSuccessResult(one);
     }
 
     @GetMapping("/myGetById")
-    public Result myGetById(Integer id){
+    public Result myGetById(Integer id) {
         User user = userService.myGetById(id);
         return ResultGenerator.getSuccessResult(user);
     }

@@ -14,10 +14,10 @@ public class UserDetail extends Auth implements UserDetails {
     public Collection<? extends GrantedAuthority> getAuthorities() {
         List<GrantedAuthority> authorities = new ArrayList<>();
         getSysPermissions().forEach(permission -> {
-           if(StringUtils.isNotEmpty(permission.getPermission())){
-               SimpleGrantedAuthority grantedAuthority = new SimpleGrantedAuthority(permission.getPermission());
-               authorities.add(grantedAuthority);
-           }
+            if (StringUtils.isNotEmpty(permission.getPermission())) {
+                SimpleGrantedAuthority grantedAuthority = new SimpleGrantedAuthority(permission.getPermission());
+                authorities.add(grantedAuthority);
+            }
         });
         return authorities;
     }

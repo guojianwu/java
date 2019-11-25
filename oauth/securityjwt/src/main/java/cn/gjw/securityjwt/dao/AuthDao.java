@@ -13,6 +13,7 @@ import org.springframework.stereotype.Repository;
 public interface AuthDao {
     /**
      * 根据用户名查找用户
+     *
      * @param name
      * @return
      */
@@ -22,12 +23,14 @@ public interface AuthDao {
 
     /**
      * 创建新用户
+     *
      * @param userDetail
      */
     void insert(UserDetail userDetail);
 
     /**
      * 创建用户角色
+     *
      * @param userId
      * @param roleId
      * @return
@@ -36,6 +39,7 @@ public interface AuthDao {
 
     /**
      * 根据角色id查找角色
+     *
      * @param roleId
      * @return
      */
@@ -43,6 +47,7 @@ public interface AuthDao {
 
     /**
      * 根据用户id查找该用户角色
+     *
      * @param userId
      * @return
      */

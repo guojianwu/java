@@ -20,46 +20,48 @@ public class UserService {
 
     @Autowired
     RoleUserDao roleUserDao;
-    public Results<SysUser>  getAllUsersByPage(String name,Integer startPosition,Integer pageSize){
-        List<SysUser> allUsersByPage = userDao.getAllUsersByPage(name,startPosition, pageSize);
+
+    public Results<SysUser> getAllUsersByPage(String name, Integer startPosition, Integer pageSize) {
+        List<SysUser> allUsersByPage = userDao.getAllUsersByPage(name, startPosition, pageSize);
         Long count = userDao.countAllUsers(name);
 
-        return Results.success(count.intValue(),allUsersByPage);
+        return Results.success(count.intValue(), allUsersByPage);
     }
-    public Results save(UserDto userDto){
-        if(userDto.getRoleId() !=null){
+
+    public Results save(UserDto userDto) {
+        if (userDto.getRoleId() != null) {
             userDao.save(userDto);
             SysRoleUser sysRoleUser = new SysRoleUser();
-            sysRoleUser.setRoleId(userDto.getRoleId() );
+            sysRoleUser.setRoleId(userDto.getRoleId());
             sysRoleUser.setUserId(userDto.getId().intValue());
             roleUserDao.save(sysRoleUser);
             return Results.success();
         }
-        return  Results.failure();
+        return Results.failure();
     }
 
-    public Results getUserById(Integer id){
+    public Results getUserById(Integer id) {
         SysUser userById = userDao.getUserById(id);
         return Results.success(userById);
     }
 
-    public Results updateUserById(SysUser sysUser){
+    public Results updateUserById(SysUser sysUser) {
         userDao.updateUserById(sysUser);
         SysRoleUser roleUser = new SysRoleUser();
         roleUser.setUserId(sysUser.getId().intValue());
         roleUser.setRoleId(sysUser.getRoleId());
         roleUserDao.updateByUserId(roleUser);
 
-        return  Results.success();
+        return Results.success();
     }
 
-    public Results deleteUserById(Integer id){
-        int i =roleUserDao.deleteByUserId(id);
+    public Results deleteUserById(Integer id) {
+        int i = roleUserDao.deleteByUserId(id);
 
-        if(i>0){
+        if (i > 0) {
             userDao.deleteUserById(id);
             return Results.success();
-        }else {
+        } else {
             return Results.failure();
         }
     }

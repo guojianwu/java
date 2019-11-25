@@ -16,10 +16,10 @@ class MybatisnxApplicationTests {
     @Autowired
     UserInfoMapper userInfoMapper;
 
-    Logger logger= LoggerFactory.getLogger(getClass());
+    Logger logger = LoggerFactory.getLogger(getClass());
 
     @Test
-    public void logg(){
+    public void logg() {
         logger.trace("日志：trace");
         logger.debug("debug");
         logger.info("info");

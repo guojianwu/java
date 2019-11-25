@@ -11,6 +11,7 @@ import org.springframework.stereotype.Service;
 
 /**
  * 登陆身份认证
+ *
  * @author: JoeTao
  * createAt: 2018/9/14
  */
@@ -19,7 +20,7 @@ public class CustomUserDetailsServiceImpl implements UserDetailsService {
 //    private final AuthMapper authMapper;
 
     @Autowired
-    private  AuthMapper authMapper;
+    private AuthMapper authMapper;
 //    public CustomUserDetailsServiceImpl(AuthMapper authMapper) {
 //        this.authMapper = authMapper;
 //    }

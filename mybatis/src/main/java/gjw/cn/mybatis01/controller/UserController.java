@@ -29,23 +29,23 @@ public class UserController {
     DeptDao deptDao;
 
     @GetMapping("/allUser")
-    public List<User> allUser(){
+    public List<User> allUser() {
         return userService.allUser();
     }
 
     @GetMapping("/addUser2")
-    public int addUser2(User user){
+    public int addUser2(User user) {
         System.out.println(user);
 //        String id = UUID.randomUUID().toString();
 //        user.setId(id);
 //        userService.addUser(user);
         userService.addUser(user);
         System.out.println(user.getId());
-        return  user.getId();
+        return user.getId();
     }
 
     @PostMapping("/addUser")
-    public void addUser(@RequestBody User user){
+    public void addUser(@RequestBody User user) {
         System.out.println(user);
 //        String id = UUID.randomUUID().toString();
 //        user.setId(id);
@@ -53,21 +53,21 @@ public class UserController {
     }
 
     @GetMapping("getUserandDept")
-    public List getUserandDept(){
+    public List getUserandDept() {
         List<User> userById = userDao.getUserById();
         return userById;
     }
 
     @GetMapping("getUserandDept2")
-    public Dept getUserandDept2(@Param("id") Integer id){
+    public Dept getUserandDept2(@Param("id") Integer id) {
         System.out.println(id);
         Dept deptByIdPlus = deptDao.getDeptByIdPlus(id);
         System.out.println(deptByIdPlus);
-        return  deptByIdPlus;
+        return deptByIdPlus;
     }
 
     @GetMapping("/getUserByIf")
-    public List<User> getUserByIf(User user){
+    public List<User> getUserByIf(User user) {
         return userDao.getUserByIf(user);
     }
 }

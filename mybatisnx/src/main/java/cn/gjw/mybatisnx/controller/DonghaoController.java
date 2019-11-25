@@ -24,10 +24,10 @@ public class DonghaoController {
     private String name;
 
     @RequestMapping("/hello")
-    public String hello(){
+    public String hello() {
 //        System.out.println(donghao);
         helloService.hello();
-        return  name;
+        return name;
     }
 
 }

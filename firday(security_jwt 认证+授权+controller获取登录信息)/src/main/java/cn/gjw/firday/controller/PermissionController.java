@@ -16,22 +16,22 @@ public class PermissionController {
     PermissionService permissionService;
 
     @RequestMapping("/findAll")
-    public Results findAll(){
+    public Results findAll() {
         return permissionService.findAll();
     }
 
     @GetMapping("/findById")
-    public Results findById(Integer id){
+    public Results findById(Integer id) {
         return permissionService.findById(id);
     }
 
     @PostMapping("/save")
     @PreAuthorize("hasAnyAuthority('sys:menu:edit','sys:menu:add')")
-    public Results save(@Valid @RequestBody SysPermission sysPermission){
+    public Results save(@Valid @RequestBody SysPermission sysPermission) {
         System.out.println(sysPermission);
-        if(sysPermission.getId()==null){ //新增
+        if (sysPermission.getId() == null) { //新增
             return permissionService.save(sysPermission);
-        }else { //修改
+        } else { //修改
 
 //            return null;
             return permissionService.update(sysPermission);
@@ -41,7 +41,7 @@ public class PermissionController {
 
     @PreAuthorize("hasAnyAuthority('sys:menu:del')")
     @PostMapping("/delete/{id}")
-    public Results delete(@PathVariable("id") Integer id){
+    public Results delete(@PathVariable("id") Integer id) {
         return permissionService.delate(id);
     }
 

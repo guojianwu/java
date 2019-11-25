@@ -1,59 +1,71 @@
 {
-    "code": 200,
-    "tabList":[{
-      "id":"01",
-      "name":"灯具"
-    },{
-      "id":"02",
-      "name":"家具"
+  "code": 200,
+  "tabList": [
+    {
+      "id": "01",
+      "name": "灯具"
     },
     {
-      "id":"03",
-      "name":"电器"
-    }],
-    "typeList":[
-      {
-        "id":"01",
-        "typeLabel":"text",
-        "typeName":"文本"
-      },
-      {
-        "id":"02",
-        "typeLabel":"radio",
-        "typeName":"单选"
-      },
-      {
-        "id":"03",
-        "typeLabel":"checkbox",
-        "typeName":"多选"
-      },
-      {
-        "id":"04",
-        "typeLabel":"number",
-        "typeName":"数字"
-      }
-    ],
-    "apis":[
-      {
-        "id":"000",
-        "apiName":"品牌",
-        "apiUrl":"www.baidu.com",
-        "preset":["品牌1","品牌2"]
-      },
-      {
-        "id":"001",
-        "apiName":"类型",
-        "apiUrl":"www.baidu.com",
-        "preset":["材质1","材质2"]
-      },
-      {
-        "id":"002",
-        "apiName":"价格",
-        "apiUrl":"www.baidu.com",
-        "preset":["0-1000","10001-3000"]
-      }
-    ],
-    "tableData": [
+      "id": "02",
+      "name": "家具"
+    },
+    {
+      "id": "03",
+      "name": "电器"
+    }
+  ],
+  "typeList": [
+    {
+      "id": "01",
+      "typeLabel": "text",
+      "typeName": "文本"
+    },
+    {
+      "id": "02",
+      "typeLabel": "radio",
+      "typeName": "单选"
+    },
+    {
+      "id": "03",
+      "typeLabel": "checkbox",
+      "typeName": "多选"
+    },
+    {
+      "id": "04",
+      "typeLabel": "number",
+      "typeName": "数字"
+    }
+  ],
+  "apis": [
+    {
+      "id": "000",
+      "apiName": "品牌",
+      "apiUrl": "www.baidu.com",
+      "preset": [
+        "品牌1",
+        "品牌2"
+      ]
+    },
+    {
+      "id": "001",
+      "apiName": "类型",
+      "apiUrl": "www.baidu.com",
+      "preset": [
+        "材质1",
+        "材质2"
+      ]
+    },
+    {
+      "id": "002",
+      "apiName": "价格",
+      "apiUrl": "www.baidu.com",
+      "preset": [
+        "0-1000",
+        "10001-3000"
+      ]
+    }
+  ],
+  "tableData": [
     {
       "id": "01",
       "name": "灯具",
@@ -62,33 +74,33 @@
           "id": "01",
           "key": "所属品牌",
           "type": "01",
-          "presetEdit":false,
+          "presetEdit": false,
           "keyWord": "brandId",
-          "api":"000"
+          "api": "000"
         },
         {
           "id": "02",
           "key": "材质",
           "type": "02",
-          "presetEdit":true,
+          "presetEdit": true,
           "keyWord": "key1",
-          "api":"001"
+          "api": "001"
         },
         {
           "id": "03",
           "key": "类型",
           "type": "03",
-          "presetEdit":true,
+          "presetEdit": true,
           "keyWord": "key2",
-          "api":"001"
+          "api": "001"
         },
         {
           "id": "04",
           "key": "价格",
           "type": "04",
-          "presetEdit":true,
+          "presetEdit": true,
           "keyWord": "key3",
-          "api":"001"
+          "api": "001"
         }
       ]
     },
@@ -100,25 +112,25 @@
           "id": "01",
           "key": "所属品牌",
           "type": "01",
-          "presetEdit":false,
+          "presetEdit": false,
           "keyWord": "brandId",
-          "api":"001"
+          "api": "001"
         },
         {
           "id": "02",
           "key": "材质",
           "type": "02",
-          "presetEdit":true,
+          "presetEdit": true,
           "keyWord": "key",
-          "api":"001"
+          "api": "001"
         },
         {
           "id": "03",
           "key": "规格",
           "type": "01",
-          "presetEdit":true,
+          "presetEdit": true,
           "keyWord": "key4",
-          "api":"001"
+          "api": "001"
         }
       ]
     },

@@ -7,21 +7,21 @@
     <!--      select * from sys_user t order by t.id limit #{startPosition},#{limit} -->
     <select id="getAllUsersByPage" resultType="cn.gjw.securityjwt2.domain.SysUser">
         SELECT
-            u.*,
-            ru.roleId,
-            r.NAME
+        u.*,
+        ru.roleId,
+        r.NAME
         FROM
-            sys_user u
-            LEFT JOIN sys_role_user ru ON u.id = ru.userId
-            LEFT JOIN sys_role r ON r.id = ru.roleId
+        sys_user u
+        LEFT JOIN sys_role_user ru ON u.id = ru.userId
+        LEFT JOIN sys_role r ON r.id = ru.roleId
         <where>
             <if test="name!=null">
                 u.username LIKE CONCAT("%",#{name},"%")
             </if>
         </where>
         ORDER BY
-            u.id
-        LIMIT  #{startPosition},#{pageSize}
+        u.id
+        LIMIT #{startPosition},#{pageSize}
     </select>
     <select id="countAllUsers" resultType="java.lang.Long">
         select count(*) from sys_user
@@ -33,17 +33,19 @@
 
     </select>
     <insert id="save" useGeneratedKeys="true" keyProperty="id">
-        insert into sys_user(username, password, nickname, headImgUrl, phone, telephone, email, birthday, sex, status, createTime, updateTime) values(#{username}, #{password}, #{nickname}, #{headImgUrl}, #{phone}, #{telephone}, #{email}, #{birthday}, #{sex}, #{status}, now(), now())
+        insert into sys_user(username, password, nickname, headImgUrl, phone, telephone, email, birthday, sex, status,
+        createTime, updateTime) values(#{username}, #{password}, #{nickname}, #{headImgUrl}, #{phone}, #{telephone},
+        #{email}, #{birthday}, #{sex}, #{status}, now(), now())
     </insert>
     <select id="getUserById" resultType="cn.gjw.securityjwt2.domain.SysUser">
         SELECT
-            u.*,
-            ru.roleId,
-            r.NAME
+        u.*,
+        ru.roleId,
+        r.NAME
         FROM
-            sys_user u
-            LEFT JOIN sys_role_user ru ON u.id = ru.userId
-            LEFT JOIN sys_role r ON r.id = ru.roleId
+        sys_user u
+        LEFT JOIN sys_role_user ru ON u.id = ru.userId
+        LEFT JOIN sys_role r ON r.id = ru.roleId
         WHERE u.id=#{id}
     </select>
     <update id="updateUserById">

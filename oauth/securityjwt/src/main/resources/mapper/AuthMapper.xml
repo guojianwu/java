@@ -7,7 +7,8 @@
         SELECT id, name, password from sys_user where name = #{name};
     </select>
 
-    <insert id="insert" parameterType="cn.gjw.securityjwt.domain.auth.UserDetail" useGeneratedKeys="true" keyProperty="id">
+    <insert id="insert" parameterType="cn.gjw.securityjwt.domain.auth.UserDetail" useGeneratedKeys="true"
+            keyProperty="id">
         insert into sys_user (name, password) VALUES (#{username}, #{password});
     </insert>
 
@@ -16,7 +17,7 @@
     </insert>
 
     <select id="findRoleById" resultType="cn.gjw.securityjwt.domain.auth.Role">
-      select id, name, nameZh from sys_role where id = #{roleId}
+        select id, name, nameZh from sys_role where id = #{roleId}
     </select>
 
     <select id="findRoleByUserId" resultType="cn.gjw.securityjwt.domain.auth.Role">

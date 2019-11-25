@@ -8,24 +8,24 @@ import com.alibaba.fastjson.JSONObject;
 import java.util.List;
 
 public class TreeUtils {
-    public static boolean isHas=false;
+    public static boolean isHas = false;
 
-    public static boolean isHasChild(JSONArray array,Integer id){
+    public static boolean isHasChild(JSONArray array, Integer id) {
         List<SysPermission> sysPermissions = JSONObject.parseArray(array.toJSONString(), SysPermission.class);
-        for (SysPermission sysPermission:sysPermissions) {
-            if(sysPermission.getId()==id){
+        for (SysPermission sysPermission : sysPermissions) {
+            if (sysPermission.getId() == id) {
 
-                isHas=true;
+                isHas = true;
                 break;
-            }else {
-                if(sysPermission.getChild().size()>0){
+            } else {
+                if (sysPermission.getChild().size() > 0) {
                     JSONArray array1 = JSONArray.parseArray(JSON.toJSONString(sysPermission.getChild()));
-                    isHasChild(array1,id);
+                    isHasChild(array1, id);
                 }
 
             }
         }
-        return  isHas;
+        return isHas;
     }
 
     /**

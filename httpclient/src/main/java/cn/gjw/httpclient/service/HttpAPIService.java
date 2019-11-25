@@ -112,7 +112,7 @@ public class HttpAPIService {
 
         // 发起请求
         HttpResponse response = this.httpClient.execute(httpPost);
-        InputStream  content = response.getEntity().getContent();
+        InputStream content = response.getEntity().getContent();
 //        System.out.println(EntityUtils.toString(response.getEntity(), "UTF-8"));
 //        FileOutputStream out = new FileOutputStream("2.png");
 //        out.write(EntityUtils.toString(response.getEntity(), "UTF-8").getBytes());
@@ -169,8 +169,6 @@ public class HttpAPIService {
     public HttpResult doPost(String url) throws Exception {
         return this.doPost(url, null);
     }
-
-
 
 
 }

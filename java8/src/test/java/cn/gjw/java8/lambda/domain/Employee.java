@@ -19,9 +19,9 @@ public class Employee {
         this.salary = salary;
     }
 
-    public enum Status{
-         FREE,
-         BUSY,
+    public enum Status {
+        FREE,
+        BUSY,
         VOCATION
     }
 

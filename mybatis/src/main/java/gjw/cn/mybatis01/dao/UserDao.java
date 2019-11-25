@@ -9,8 +9,11 @@ import java.util.Map;
 @Repository
 public interface UserDao {
     List<User> allUser();
+
     void addUser(User user);
-    List<User> getUserByMap(Map<String,Object> map);
+
+    List<User> getUserByMap(Map<String, Object> map);
+
     List<User> getUserById();
 
     List<User> getUserByIf(User user);

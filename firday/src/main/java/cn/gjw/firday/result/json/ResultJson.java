@@ -10,7 +10,7 @@ import java.io.Serializable;
  * Created at 2018/3/8.
  */
 @Data
-public class ResultJson<T> implements Serializable{
+public class ResultJson<T> implements Serializable {
 
     private static final long serialVersionUID = 783015033603078674L;
     private int code;
@@ -33,11 +33,11 @@ public class ResultJson<T> implements Serializable{
         return new ResultJson(code, o);
     }
 
-    public ResultJson (ResultCode resultCode) {
+    public ResultJson(ResultCode resultCode) {
         setResultCode(resultCode);
     }
 
-    public ResultJson (ResultCode resultCode,T data) {
+    public ResultJson(ResultCode resultCode, T data) {
         setResultCode(resultCode);
         this.data = data;
     }
@@ -52,7 +52,7 @@ public class ResultJson<T> implements Serializable{
         return "{" +
                 "\"code\":" + code +
                 ", \"msg\":\"" + msg + '\"' +
-                ", \"data\":\"" + data + '\"'+
+                ", \"data\":\"" + data + '\"' +
                 '}';
     }
 }

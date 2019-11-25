@@ -10,8 +10,9 @@ import org.springframework.stereotype.Service;
 public class UserService {
     @Autowired
     UserDao userDao;
+
     public UserBean getUser(String username) {
         UserBean userBean = userDao.getUser(username);
-        return  userBean;
+        return userBean;
     }
 }

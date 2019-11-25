@@ -21,19 +21,20 @@ public class WxToken {
 
     /**
      * 微信消息接收和token验证
+     *
      * @param model
      * @param request
      * @param response
      * @throws IOException
      */
-    @RequestMapping(value = { "/get" }, method = RequestMethod.GET)
+    @RequestMapping(value = {"/get"}, method = RequestMethod.GET)
     public String signature(
             @RequestParam(value = "signature", required = true) String signature,
             @RequestParam(value = "timestamp", required = true) String timestamp,
             @RequestParam(value = "nonce", required = true) String nonce,
             @RequestParam(value = "echostr", required = true) String echostr,
             HttpServletResponse response) throws IOException {
-        String[] values = { "ggggggg", timestamp, nonce };
+        String[] values = {"ggggggg", timestamp, nonce};
         Arrays.sort(values); // 字典序排序
         String value = values[0] + values[1] + values[2];
         String sign = DigestUtils.shaHex(value);
@@ -41,13 +42,13 @@ public class WxToken {
         System.out.println(signature.equals(sign));
         if (signature.equals(sign)) {// 验证成功返回ehcostr
 //            writer.print(echostr);
-            return  echostr;
+            return echostr;
         } else {
             writer.print("error");
         }
         writer.flush();
         writer.close();
-        return  null;
+        return null;
     }
 //    @RequestMapping(value = { "/get" }, method = { RequestMethod.POST, RequestMethod.GET })
 //    public void get(@RequestBody(required = false) String reqDate, HttpServletRequest request,

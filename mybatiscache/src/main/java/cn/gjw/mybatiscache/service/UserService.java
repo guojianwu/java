@@ -14,8 +14,8 @@ public class UserService {
     UserDao userDao;
 
     @Cacheable(cacheNames = {"user"})
-    public User getUserById(Integer id){
-        System.out.println("select id:"+id);
+    public User getUserById(Integer id) {
+        System.out.println("select id:" + id);
         return userDao.getUserById(id);
     }
 }

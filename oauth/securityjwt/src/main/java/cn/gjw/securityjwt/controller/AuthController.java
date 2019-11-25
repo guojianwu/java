@@ -36,13 +36,13 @@ public class AuthController {
 
     @PostMapping(value = "/login")
     public ResultJson<ResponseUserToken> login(
-            @Valid @RequestBody User user){
+            @Valid @RequestBody User user) {
         final ResponseUserToken response = authService.login(user.getName(), user.getPassword());
         return ResultJson.ok(response);
     }
 
     @GetMapping(value = "/logout")
-    public ResultJson logout(HttpServletRequest request){
+    public ResultJson logout(HttpServletRequest request) {
         String token = request.getHeader(tokenHeader);
         if (token == null) {
             return ResultJson.failure(ResultCode.UNAUTHORIZED);
@@ -52,7 +52,7 @@ public class AuthController {
     }
 
     @GetMapping(value = "/user")
-    public ResultJson getUser(HttpServletRequest request){
+    public ResultJson getUser(HttpServletRequest request) {
         String token = request.getHeader(tokenHeader);
 //        if (token == null) {
 //            return ResultJson.failure(ResultCode.UNAUTHORIZED);

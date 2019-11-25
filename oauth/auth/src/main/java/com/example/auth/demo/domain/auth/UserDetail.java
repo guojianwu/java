@@ -25,7 +25,7 @@ public class UserDetail implements UserDetails {
             String username,
             Role role,
 //            Date lastPasswordResetDate,
-        String password) {
+            String password) {
         this.id = id;
         this.username = username;
         this.password = password;
@@ -76,12 +76,13 @@ public class UserDetail implements UserDetails {
     }
 
     /**
-     *  账户是否未锁定
+     * 账户是否未锁定
      */
     @Override
     public boolean isAccountNonLocked() {
         return true;
     }
+
     /**
      * 密码是否未过期
      */
@@ -90,12 +91,14 @@ public class UserDetail implements UserDetails {
         return true;
     }
 
-    /** 账户是否激活
+    /**
+     * 账户是否激活
      */
     @Override
     public boolean isEnabled() {
         return true;
     }
+
     public Date getLastPasswordResetDate() {
         return lastPasswordResetDate;
     }

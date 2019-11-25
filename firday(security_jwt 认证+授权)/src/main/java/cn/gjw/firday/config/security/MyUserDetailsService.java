@@ -23,6 +23,7 @@ import java.util.List;
 public class MyUserDetailsService implements UserDetailsService {
     @Autowired
     AuthDao authDao;
+
     @Override
     public UserDetails loadUserByUsername(String s) throws UsernameNotFoundException {
         System.out.println(s);
@@ -30,8 +31,8 @@ public class MyUserDetailsService implements UserDetailsService {
 
         System.out.println(auth);
 
-        if(auth == null){
-            throw new UsernameNotFoundException("没有找到username："+s);
+        if (auth == null) {
+            throw new UsernameNotFoundException("没有找到username：" + s);
         }
 //        Role role = authDao.findRoleByUserId(userDetail.getId());
 //        userDetail.setRole(role);

@@ -39,6 +39,7 @@ public class AuthService {
 
     @Value("${jwt.tokenHead}")
     private String tokenHead;
+
     public Object login(String username, String password) {
 
         final Authentication authentication = authenticate(username, password);
@@ -56,10 +57,11 @@ public class AuthService {
 //        jwtTokenUtil.putToken(username, token);
 //        return new ResponseUserToken(token, userDetail);
         HashMap<Object, Object> map = new HashMap<>();
-        map.put("token",token);
-        map.put("user",userByUsername);
+        map.put("token", token);
+        map.put("user", userByUsername);
         return Results.success(map);
     }
+
     private Authentication authenticate(String username, String password) {
         System.out.println(password);
         try {

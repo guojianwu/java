@@ -1,10 +1,12 @@
 package cn.gjw.mybatisplus2.result;
 
+import java.io.Serializable;
+
 /**
  * @author LeiTao
  * 响应结果生成工具
  */
-public class ResultGenerator {
+public class ResultGenerator implements Serializable {
     private static final String DEFAULT_SUCCESS_MESSAGE = "成功";
 
     public static Result getSuccessResult() {

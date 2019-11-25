@@ -3,7 +3,7 @@
         PUBLIC "-//ibatis.apache.org//DTD Mapper 3.0//EN"
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="gjw.cn.mybatis01.dao.DeptDao">
-<!--     Dept getDeptById(Integer id);-->
+    <!--     Dept getDeptById(Integer id);-->
     <select id="getDeptById" resultType="gjw.cn.mybatis01.domain.Dept">
         select * from dept where id=#{id}
     </select>
@@ -16,8 +16,9 @@
             <result column="password" property="password"></result>
         </collection>
     </resultMap>
-<!--    Dept getDeptByIdPlus(Integer id);-->
+    <!--    Dept getDeptByIdPlus(Integer id);-->
     <select id="getDeptByIdPlus" resultMap="test">
-        	SELECT d.id id,d.`name` name, u.id u_id,u.username username,u.`password` password  FROM dept d LEFT JOIN user2 u on d.id=u.d_id WHERE d.id =#{id}
+        SELECT d.id id,d.`name` name, u.id u_id,u.username username,u.`password` password FROM dept d LEFT JOIN user2 u
+        on d.id=u.d_id WHERE d.id =#{id}
     </select>
 </mapper>

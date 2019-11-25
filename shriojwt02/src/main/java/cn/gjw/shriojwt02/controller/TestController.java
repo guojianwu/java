@@ -14,11 +14,10 @@ public class TestController {
     UserDao userDao;
 
     @RequestMapping("/test")
-    public UserBean test(@RequestParam("name") String username){
+    public UserBean test(@RequestParam("name") String username) {
         System.out.println(username);
-        return  userDao.getUser(username);
+        return userDao.getUser(username);
     }
-
 
 
 }

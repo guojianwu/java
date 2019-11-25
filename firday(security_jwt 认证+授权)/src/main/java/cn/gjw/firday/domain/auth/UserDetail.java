@@ -15,16 +15,17 @@ public class UserDetail implements UserDetails {
 
 
     private Collection<? extends GrantedAuthority> authorities;
-    public UserDetail(Auth auth){
+
+    public UserDetail(Auth auth) {
         List<GrantedAuthority> authorities = new ArrayList<>();
-        auth.getSysPermissions() .forEach(permission -> {
-            if(StringUtils.isNotEmpty(permission.getPermission())){
+        auth.getSysPermissions().forEach(permission -> {
+            if (StringUtils.isNotEmpty(permission.getPermission())) {
                 SimpleGrantedAuthority grantedAuthority = new SimpleGrantedAuthority(permission.getPermission());
                 authorities.add(grantedAuthority);
             }
         });
-        this.authorities=authorities;
-        this.auth=auth;
+        this.authorities = authorities;
+        this.auth = auth;
 
     }
 
@@ -48,6 +49,7 @@ public class UserDetail implements UserDetails {
     public String getUsername() {
         return auth.getUsername();
     }
+
     /**
      * 判断账号是否已经过期，默认没有过期
      *
@@ -57,6 +59,7 @@ public class UserDetail implements UserDetails {
     public boolean isAccountNonExpired() {
         return true;
     }
+
     /**
      * 判断账号是否被锁定，默认没有锁定
      *
@@ -64,8 +67,9 @@ public class UserDetail implements UserDetails {
      */
     @Override
     public boolean isAccountNonLocked() {
-        return  auth.getStatus()==1;
+        return auth.getStatus() == 1;
     }
+
     /**
      * todo 判断信用凭证是否过期，默认没有过期
      *
@@ -75,6 +79,7 @@ public class UserDetail implements UserDetails {
     public boolean isCredentialsNonExpired() {
         return true;
     }
+
     /**
      * 判断账号是否可用，默认可用
      *
@@ -82,6 +87,6 @@ public class UserDetail implements UserDetails {
      */
     @Override
     public boolean isEnabled() {
-        return  auth.getStatus()==1;
+        return auth.getStatus() == 1;
     }
 }

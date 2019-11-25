@@ -3,6 +3,7 @@ package com.sxbang.friday.util;
 import com.alibaba.fastjson.JSONArray;
 import com.alibaba.fastjson.JSONObject;
 import com.sxbang.friday.model.SysPermission;
+
 import java.util.List;
 
 public class TreeUtils {

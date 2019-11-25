@@ -10,7 +10,7 @@ public class TbUserService {
     @Autowired
     TbUserDao tbUserDao;
 
-    public TbUser getUserByName(String name){
+    public TbUser getUserByName(String name) {
         return tbUserDao.getUserByName(name);
     }
 }

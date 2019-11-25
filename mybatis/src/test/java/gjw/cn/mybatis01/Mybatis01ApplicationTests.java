@@ -27,51 +27,54 @@ public class Mybatis01ApplicationTests {
 
     @Autowired
     UserDao userDao;
+
     @Test
     public void contextLoads() {
 //        String s = UUID.randomUUID().toString();
 //        System.out.println(s);
         List<User> users = userService.allUser();
-        for (User u: users){
+        for (User u : users) {
             System.out.println(u);
         }
     }
 
     @Test
-    public void test01(){
+    public void test01() {
         User user = new User();
-                String s = UUID.randomUUID().toString();
+        String s = UUID.randomUUID().toString();
 //        System.out.println(s);
 //        user.setId(s);
         user.setUsername("haha");
         user.setPassword("111111");
         userService.addUser(user);
     }
+
     @Test
-    public void test02(){
+    public void test02() {
         HashMap<String, Object> map = new HashMap<>();
-        map.put("id",1);
-        map.put("username","aa");
+        map.put("id", 1);
+        map.put("username", "aa");
         List<User> userByMap = userDao.getUserByMap(map);
         System.out.println(userByMap);
     }
 
     @Test
-    public void test03(){
+    public void test03() {
         HashMap<String, Object> map = new HashMap<>();
-        map.put("id",1);
-        map.put("username","aa");
+        map.put("id", 1);
+        map.put("username", "aa");
         List<User> userByMap = userDao.getUserById();
         System.out.println(userByMap);
     }
 
     @Test
-    public void test04(){
+    public void test04() {
         Dept dept = deptDao.getDeptById(1);
         System.out.println(dept);
     }
+
     @Test
-    public void test05(){
+    public void test05() {
         Dept dept = deptDao.getDeptByIdPlus(1);
         System.out.println(dept);
     }

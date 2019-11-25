@@ -10,10 +10,13 @@ import java.util.List;
 @Repository
 public interface UserDao {
     Long countAllUsers(String name);
-    List<SysUser> getAllUsersByPage(@Param("name")String name,@Param("startPosition") Integer startPosition, @Param("pageSize") Integer pageSize);
+
+    List<SysUser> getAllUsersByPage(@Param("name") String name, @Param("startPosition") Integer startPosition, @Param("pageSize") Integer pageSize);
 
     int save(SysUser sysUser);
+
     SysUser getUserById(Integer id);
+
     int updateUserById(SysUser userDto);
 
     int deleteUserById(Integer id);

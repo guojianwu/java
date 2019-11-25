@@ -19,24 +19,27 @@ public class DefaultExceptionHandler {
 
     /**
      * 处理所有自定义异常
+     *
      * @param e
      * @return
      */
     @ExceptionHandler(CustomException.class)
-    public Results handleCustomException(CustomException e){
+    public Results handleCustomException(CustomException e) {
         System.out.println("handleCustomException");
         //log.error(e.getResultJson().getMsg().toString());
         return e.getResults();
     }
+
     /**
      * 处理参数校验异常
+     *
      * @param e
      * @return
      */
     @ExceptionHandler(MethodArgumentNotValidException.class)
-    public Results handleMethodArgumentNotValidException(MethodArgumentNotValidException e){
+    public Results handleMethodArgumentNotValidException(MethodArgumentNotValidException e) {
         System.out.println("MethodArgumentNotValidException");
 //        log.error(e.getBindingResult().getFieldError().getField() + e.getBindingResult().getFieldError().getDefaultMessage());
-        return Results.failure(ResponseCode.BAD_REQUEST.getCode(),e.getBindingResult().getFieldError().getDefaultMessage());
+        return Results.failure(ResponseCode.BAD_REQUEST.getCode(), e.getBindingResult().getFieldError().getDefaultMessage());
     }
 }

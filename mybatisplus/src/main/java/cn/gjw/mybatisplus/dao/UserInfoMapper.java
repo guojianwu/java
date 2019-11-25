@@ -2,7 +2,9 @@ package cn.gjw.mybatisplus.dao;
 
 import cn.gjw.mybatisplus.entity.UserInfo;
 import cn.gjw.mybatisplus.entity.UserInfoExample;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 import org.springframework.stereotype.Repository;
 

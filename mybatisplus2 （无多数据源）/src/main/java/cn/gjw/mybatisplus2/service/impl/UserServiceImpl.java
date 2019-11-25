@@ -9,7 +9,7 @@ import org.springframework.stereotype.Service;
 
 
 @Service
-public class UserServiceImpl extends ServiceImpl<UserDao,User> implements UserService {
+public class UserServiceImpl extends ServiceImpl<UserDao, User> implements UserService {
 
     @Autowired
     UserDao userDao;

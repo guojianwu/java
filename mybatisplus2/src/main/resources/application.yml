@@ -1,9 +1,9 @@
 spring:
   datasource:
     driver-class-name: com.mysql.jdbc.Driver
-#    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false&serverTimezone=UTC
-#    username: root
-#    password: root
+    #    url: jdbc:mysql://localhost:3306/test?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false&serverTimezone=UTC
+    #    username: root
+    #    password: root
     #    platform: mysql
     type: com.alibaba.druid.pool.DruidDataSource
     dynamic:
@@ -21,6 +21,10 @@ spring:
           url: jdbc:mysql://localhost:3306/test2?useUnicode=true&characterEncoding=utf-8&allowMultiQueries=true&useSSL=false&serverTimezone=UTC
           username: root
           password: root
+  redis:
+    host: 193.112.64.183
+    port: 6379
+    password: 123456
 
 
 server:
@@ -40,6 +44,8 @@ mybatis-plus:
   configuration:
     map-underscore-to-camel-case: true
     log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+    cache-enabled: true
   global-config:
     db-config:
       id-type: auto
+

@@ -11,8 +11,7 @@ import org.springframework.web.bind.annotation.RestController;
 public class Test {
 
 
-
-//    @Value("${person.name}")
+    //    @Value("${person.name}")
     private static String name;
 
     @Value("${person.name}")
@@ -21,7 +20,7 @@ public class Test {
     }
 
     @RequestMapping("/test")
-    public String test(){
+    public String test() {
         System.out.println(name);
         return "nihaoss 0000";
     }

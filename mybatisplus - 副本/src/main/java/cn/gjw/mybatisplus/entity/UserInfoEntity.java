@@ -10,8 +10,8 @@ import lombok.Data;
 public class UserInfoEntity {
     /**
      * 主键
-     * @TableId中可以决定主键的类型,不写会采取默认值,默认值可以在yml中配置
-     * AUTO: 数据库ID自增
+     *
+     * @TableId中可以决定主键的类型,不写会采取默认值,默认值可以在yml中配置 AUTO: 数据库ID自增
      * INPUT: 用户输入ID
      * ID_WORKER: 全局唯一ID，Long类型的主键
      * ID_WORKER_STR: 字符串全局唯一ID

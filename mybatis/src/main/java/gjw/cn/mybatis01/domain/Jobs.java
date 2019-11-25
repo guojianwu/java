@@ -1,10 +1,10 @@
 package gjw.cn.mybatis01.domain;
 
 public class Jobs {
-    private  String jobId;
-    private  String jobTitle;
-    private  Integer minSalary;
-    private  Integer maxSalary;
+    private String jobId;
+    private String jobTitle;
+    private Integer minSalary;
+    private Integer maxSalary;
 
     public String getJobId() {
         return jobId;

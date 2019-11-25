@@ -2,7 +2,9 @@ package cn.gjw.mybatisnx.dao;
 
 import cn.gjw.mybatisnx.entity.User2;
 import cn.gjw.mybatisnx.entity.User2Example;
+
 import java.util.List;
+
 import org.apache.ibatis.annotations.Param;
 
 public interface User2Mapper {

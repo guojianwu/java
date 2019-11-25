@@ -17,19 +17,22 @@ public class UserInfoController {
 
     @Autowired
     private UserInfoService userInfoService;
+
     @RequestMapping("/getInfo")
-    public UserInfoEntity getInfo(String userId){
+    public UserInfoEntity getInfo(String userId) {
         UserInfoEntity userInfoEntity = userInfoService.getById(userId);
         return userInfoEntity;
     }
+
     /**
      * 分页查询全部数据
+     *
      * @Author Sans
      * @CreateTime 2019/6/8 16:37
      * @Return IPage<UserInfoEntity> 分页数据
      */
     @RequestMapping("/getInfoListPage")
-    public IPage<UserInfoEntity> getInfoListPage(@Param("pageNum") Long pageNum, @Param("pageSize") Long pageSize){
+    public IPage<UserInfoEntity> getInfoListPage(@Param("pageNum") Long pageNum, @Param("pageSize") Long pageSize) {
         System.out.println(pageNum);
         System.out.println(pageSize);
         Page<UserInfoEntity> page = new Page<>();
@@ -38,8 +41,10 @@ public class UserInfoController {
         IPage<UserInfoEntity> page1 = userInfoService.page(page);
         return page1;
     }
+
     /**
      * 新增用户信息
+     *
      * @Author Sans
      * @CreateTime 2019/6/8 16:40
      */
@@ -56,10 +61,11 @@ public class UserInfoController {
         System.out.println(userInfoEntity);
 
         System.out.println(userInfoEntity.getId());
-        return  userInfoEntity.getId();
+        return userInfoEntity.getId();
     }
+
     @RequestMapping("/saveInfoList")
-    public String saveInfoList(){
+    public String saveInfoList() {
         UserInfoEntity sans = new UserInfoEntity();
         sans.setName("Sans");
         sans.setSkill("睡觉");
@@ -79,7 +85,7 @@ public class UserInfoController {
         list.add(papyrus);
 
         userInfoService.saveBatch(list);
-        return  "新增成功";
+        return "新增成功";
 
     }
 

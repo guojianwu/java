@@ -9,7 +9,6 @@ function resolve(dir) {
 }
 
 
-
 module.exports = {
   context: path.resolve(__dirname, '../'),
   entry: {
@@ -31,10 +30,10 @@ module.exports = {
   },
   module: {
     rules: [{
-        test: /\.vue$/,
-        loader: 'vue-loader',
-        options: vueLoaderConfig
-      },
+      test: /\.vue$/,
+      loader: 'vue-loader',
+      options: vueLoaderConfig
+    },
       {
         test: /\.scss$/,
         loaders: ['style', 'css', 'sass']

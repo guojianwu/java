@@ -12,6 +12,7 @@ public interface RoleDao {
     List<SysRole> getAllRoles();
 
     List<SysRole> getRoleByPage(PageTableRequest request);
+
     Long getRoleConut(PageTableRequest request);
 
     int save(SysRole sysRole);

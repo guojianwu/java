@@ -11,12 +11,13 @@ import org.springframework.test.context.junit4.SpringRunner;
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class DemoApplicationTests {
-	@Autowired
-	AuthMapper authMapper;
-	@Test
-	public void contextLoads() {
-		UserDetail userById = authMapper.getUserById(3L);
-		System.out.println(userById);
-	}
+    @Autowired
+    AuthMapper authMapper;
+
+    @Test
+    public void contextLoads() {
+        UserDetail userById = authMapper.getUserById(3L);
+        System.out.println(userById);
+    }
 
 }

@@ -41,6 +41,7 @@ public class AuthService {
 
     @Value("${jwt.tokenHead}")
     private String tokenHead;
+
     public Object login(String username, String password) {
 
         final Authentication authentication = authenticate(username, password);
@@ -50,8 +51,8 @@ public class AuthService {
         System.out.println(authentication);
         //生成token
 //        final UserDetail userDetail = (UserDetail) authentication.getPrincipal();
-        UserDetail principal = (UserDetail)authentication.getPrincipal();
-        Auth userByUsername=principal.getAuth();
+        UserDetail principal = (UserDetail) authentication.getPrincipal();
+        Auth userByUsername = principal.getAuth();
 //        Collection<? extends GrantedAuthority> authorities = principal.getAuthorities();
 //        Auth userByUsername = authDao.getUserByUsername(username);
 //        System.out.println(userByUsername);
@@ -61,10 +62,11 @@ public class AuthService {
 //        jwtTokenUtil.putToken(username, token);
 //        return new ResponseUserToken(token, userDetail);
         HashMap<Object, Object> map = new HashMap<>();
-        map.put("token",token);
-        map.put("user",userByUsername);
+        map.put("token", token);
+        map.put("user", userByUsername);
         return Results.success(map);
     }
+
     private Authentication authenticate(String username, String password) {
         System.out.println(password);
         try {
@@ -73,7 +75,7 @@ public class AuthService {
         } catch (DisabledException | BadCredentialsException e) {
             String body = JSONArray.toJSON(Results.failure(ResponseCode.LOGIN_ERROR.getCode(), ResponseCode.LOGIN_ERROR.getMessage())).toString();
 
-            throw new CustomException(Results.failure(ResponseCode.LOGIN_ERROR.getCode(),ResponseCode.LOGIN_ERROR.getMessage()));
+            throw new CustomException(Results.failure(ResponseCode.LOGIN_ERROR.getCode(), ResponseCode.LOGIN_ERROR.getMessage()));
         }
     }
 }

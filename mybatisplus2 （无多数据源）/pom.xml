@@ -62,9 +62,6 @@
         </dependency>
 
 
-
-
-
         <!-- https://mvnrepository.com/artifact/com.baomidou/mybatis-plus-boot-starter -->
         <dependency>
             <groupId>com.baomidou</groupId>
@@ -87,9 +84,6 @@
             <artifactId>fastjson</artifactId>
             <version>1.2.62</version>
         </dependency>
-
-
-
 
 
     </dependencies>

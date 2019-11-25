@@ -15,9 +15,9 @@ public class RoleUserServiceImpl implements RoleUserService {
     @Override
     public Results getSysRoleUserByUserId(Integer userId) {
         SysRoleUser sysRoleUser = roleUserDao.getSysRoleUserByUserId(userId);
-        if(sysRoleUser != null){
+        if (sysRoleUser != null) {
             return Results.success(sysRoleUser);
-        }else{
+        } else {
             return Results.success();
         }
     }

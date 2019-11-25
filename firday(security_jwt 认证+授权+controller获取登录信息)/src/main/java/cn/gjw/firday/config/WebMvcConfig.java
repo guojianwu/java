@@ -20,7 +20,7 @@ public class WebMvcConfig extends WebMvcConfigurationSupport {
     }
 
     @Bean
-    public UserResolver userResolver(){
+    public UserResolver userResolver() {
         return new UserResolver();
     }
 }

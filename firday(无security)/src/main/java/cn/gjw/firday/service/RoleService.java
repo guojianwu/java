@@ -29,29 +29,29 @@ public class RoleService {
     @Autowired
     RolePermissionDao rolePermissionDao;
 
-    public Results getAllRoles(){
+    public Results getAllRoles() {
         List<SysRole> allRoles = roleDao.getAllRoles();
-        return Results.success(0,allRoles);
+        return Results.success(0, allRoles);
     }
 
-    public Results getRoleByPage(PageTableRequest request){
+    public Results getRoleByPage(PageTableRequest request) {
         List<SysRole> roleByPage = roleDao.getRoleByPage(request);
         int i = roleDao.getRoleConut(request).intValue();
-        return  Results.success(i,roleByPage);
+        return Results.success(i, roleByPage);
     }
 
     public Results save(RoleDto roleDto) {
         roleDao.save(roleDto);
         List<Long> permissionIds = roleDto.getPermissionIds();
         permissionIds.remove(0L);
-        if(!CollectionUtils.isEmpty(permissionIds)) {
+        if (!CollectionUtils.isEmpty(permissionIds)) {
             rolePermissionDao.saveList(roleDto.getId(), permissionIds);
         }
         return Results.success();
     }
 
 
-    public Results getRoleById(Integer id){
+    public Results getRoleById(Integer id) {
         return Results.success(roleDao.getRoleById(id));
     }
 
@@ -60,7 +60,7 @@ public class RoleService {
         rolePermissionDao.deleteByRoleId(roleDto.getId());
         List<Long> permissionIds = roleDto.getPermissionIds();
         permissionIds.remove(0L);
-        if(!CollectionUtils.isEmpty(permissionIds)) {
+        if (!CollectionUtils.isEmpty(permissionIds)) {
             rolePermissionDao.saveList(roleDto.getId(), roleDto.getPermissionIds());
         }
         return Results.success();
@@ -68,12 +68,12 @@ public class RoleService {
 
     public Results deleteById(Integer id) {
         List<SysRoleUser> roleUsers = roleUserDao.findByRoleId(id);
-        if(roleUsers.size()>0){
-            return Results.failure(400,"该角色已绑定用户");
-        }else {
-           roleDao.deleteById(id);
-           rolePermissionDao.deleteByRoleId(id);
-           return Results.success("删除成功");
+        if (roleUsers.size() > 0) {
+            return Results.failure(400, "该角色已绑定用户");
+        } else {
+            roleDao.deleteById(id);
+            rolePermissionDao.deleteByRoleId(id);
+            return Results.success("删除成功");
         }
     }
 }

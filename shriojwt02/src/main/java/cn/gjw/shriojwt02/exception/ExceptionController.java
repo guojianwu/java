@@ -43,8 +43,8 @@ public class ExceptionController {
     }
 
     @ExceptionHandler(TestEx.class)
-    public ResponseBean testEx(TestEx e){
-        return new ResponseBean(401,e.getMessage(),null);
+    public ResponseBean testEx(TestEx e) {
+        return new ResponseBean(401, e.getMessage(), null);
     }
 
 

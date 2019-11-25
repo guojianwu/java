@@ -15,20 +15,20 @@ public class MyTest {
 
 
     List<Employee> employees = Arrays.asList(
-            new Employee("张三",18,99999.99),
-            new Employee("李四",38,555.99),
-            new Employee("王五",50,6666.66),
-            new Employee("赵六",16,3333.33),
-            new Employee("田七",8,77777.77)
+            new Employee("张三", 18, 99999.99),
+            new Employee("李四", 38, 555.99),
+            new Employee("王五", 50, 6666.66),
+            new Employee("赵六", 16, 3333.33),
+            new Employee("田七", 8, 77777.77)
     );
 
     @Test
-    public void test6(){
-        Collections.sort(employees,(e1,e2)->{
-            if(e1.getAge()==e2.getAge()){
+    public void test6() {
+        Collections.sort(employees, (e1, e2) -> {
+            if (e1.getAge() == e2.getAge()) {
                 return e1.getName().compareTo(e2.getName());
-            }else {
-                return Integer.compare(e1.getAge(),e2.getAge());
+            } else {
+                return Integer.compare(e1.getAge(), e2.getAge());
             }
         });
 
@@ -37,19 +37,18 @@ public class MyTest {
     }
 
 
-
-    public List<Employee> myfillter(List<Employee> employees, MyPredicate<Employee> mp){
+    public List<Employee> myfillter(List<Employee> employees, MyPredicate<Employee> mp) {
         ArrayList<Employee> employees1 = new ArrayList<>();
-        for (Employee emps: employees) {
-            if(mp.test(emps)){
+        for (Employee emps : employees) {
+            if (mp.test(emps)) {
                 employees1.add(emps);
             }
         }
-        return  employees1;
+        return employees1;
     }
 
     @Test
-    public void test5(){
+    public void test5() {
         employees.stream().filter((e) -> e.getSalary() > 6000).forEach(e -> {
             System.out.println(e);
         });
@@ -58,51 +57,52 @@ public class MyTest {
 //            System.out.println(e);
 //        }));
     }
+
     @Test
-    public void test4(){
-        List<Employee> list=myfillter(employees,(e)-> e.getSalary()>=500);
-        for (Employee emps: list) {
+    public void test4() {
+        List<Employee> list = myfillter(employees, (e) -> e.getSalary() >= 500);
+        for (Employee emps : list) {
             System.out.println(emps);
         }
     }
+
     @Test
-    public void test3(){
+    public void test3() {
         List<Employee> myfillter = myfillter(employees, new FilterByAge());
-        for (Employee emps: myfillter) {
+        for (Employee emps : myfillter) {
             System.out.println(emps);
         }
     }
 
 
-
-    public List<Employee> fllterAge(List<Employee> list){
+    public List<Employee> fllterAge(List<Employee> list) {
         ArrayList<Employee> employees = new ArrayList<>();
-        for (Employee emps:list){
-            if(emps.getAge() >=35 ){
+        for (Employee emps : list) {
+            if (emps.getAge() >= 35) {
                 employees.add(emps);
             }
         }
-        return  employees;
+        return employees;
     }
 
     @Test
-    public void test2(){
+    public void test2() {
         List<Employee> employees = this.fllterAge(this.employees);
-        for (Employee emps: employees) {
+        for (Employee emps : employees) {
             System.out.println(emps);
         }
     }
 
     @Test
-    public void test1(){
+    public void test1() {
         Comparator<Integer> com = new Comparator<Integer>() {
             @Override
             public int compare(Integer o1, Integer o2) {
-                return Integer.compare(o1,o2);
+                return Integer.compare(o1, o2);
             }
         };
 
-        Comparator<Integer> com1=(x,y)->Integer.compare(x,y);
+        Comparator<Integer> com1 = (x, y) -> Integer.compare(x, y);
 
         TreeSet<Integer> ts = new TreeSet<>(com1);
         ts.add(45);

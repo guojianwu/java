@@ -9,8 +9,8 @@ import org.springframework.web.servlet.ModelAndView;
 @RequestMapping("${api-url}")
 public class ApiController {
 
-    @RequestMapping(value="/getPage")
-    public ModelAndView getPage(ModelAndView modelAndView, String pageName){
+    @RequestMapping(value = "/getPage")
+    public ModelAndView getPage(ModelAndView modelAndView, String pageName) {
         modelAndView.setViewName(pageName);
         return modelAndView;
     }

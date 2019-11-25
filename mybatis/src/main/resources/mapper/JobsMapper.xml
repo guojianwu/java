@@ -4,9 +4,9 @@
         "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
 <mapper namespace="gjw.cn.mybatis01.dao.JobsDao">
 
-        <select id="allJobs" resultType="gjw.cn.mybatis01.domain.Jobs">
-            select  * from jobs
-        </select>
+    <select id="allJobs" resultType="gjw.cn.mybatis01.domain.Jobs">
+        select * from jobs
+    </select>
 
 
 </mapper>

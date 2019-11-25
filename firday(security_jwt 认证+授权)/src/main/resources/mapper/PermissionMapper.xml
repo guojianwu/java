@@ -8,7 +8,7 @@
         (#{parentId},#{name},#{css},#{href},#{type},#{permission},#{sort})
     </insert>
     <update id="update">
-        update sys_permission 
+        update sys_permission
         <set>
             <if test="parentId != null">
                 parentId= #{parentId},
@@ -37,10 +37,10 @@
         </where>
     </update>
     <delete id="deleteById">
-        delete  from  sys_permission where id=#{id}
+        delete from sys_permission where id=#{id}
     </delete>
     <delete id="deleteByParentId">
-         delete  from  sys_permission where parentId=#{parentId}
+        delete from sys_permission where parentId=#{parentId}
     </delete>
     <select id="findAll" resultType="cn.gjw.firday.domain.SysPermission">
         select * from sys_permission

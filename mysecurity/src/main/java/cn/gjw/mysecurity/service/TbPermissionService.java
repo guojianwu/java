@@ -11,7 +11,8 @@ import java.util.List;
 public class TbPermissionService {
     @Autowired
     TbPermissionDao tbPermissionDao;
-    public List<TbPermission> getUserById(Integer id){
+
+    public List<TbPermission> getUserById(Integer id) {
         return tbPermissionDao.getUserById(id);
     }
 }

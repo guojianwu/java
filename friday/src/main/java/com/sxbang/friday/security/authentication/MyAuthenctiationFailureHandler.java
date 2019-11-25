@@ -34,22 +34,22 @@ public class MyAuthenctiationFailureHandler extends SimpleUrlAuthenticationFailu
             response.setHeader("Access-Control-Allow-Methods", "*");
             response.setContentType("application/json;charset=UTF-8");
             response.setStatus(HttpStatus.UNAUTHORIZED.value());
-            Map<String,Object> map = new HashMap<>();
-            if(exception instanceof LockedException){
-                map.put("message","账户被锁定，登录失败!");
-            }else if(exception instanceof BadCredentialsException){
-                map.put("message","账户名或密码输入错误，登录失败!");
-            }else if(exception instanceof DisabledException){
-                map.put("message","账户被禁用，登录失败!");
-            }else if(exception instanceof AccountExpiredException){
-                map.put("message","账户已过期，登录失败!");
-            }else if(exception instanceof CredentialsExpiredException){
-                map.put("message","密码已过期，登录失败!");
-            }else{
-                map.put("message","登录失败!");
+            Map<String, Object> map = new HashMap<>();
+            if (exception instanceof LockedException) {
+                map.put("message", "账户被锁定，登录失败!");
+            } else if (exception instanceof BadCredentialsException) {
+                map.put("message", "账户名或密码输入错误，登录失败!");
+            } else if (exception instanceof DisabledException) {
+                map.put("message", "账户被禁用，登录失败!");
+            } else if (exception instanceof AccountExpiredException) {
+                map.put("message", "账户已过期，登录失败!");
+            } else if (exception instanceof CredentialsExpiredException) {
+                map.put("message", "密码已过期，登录失败!");
+            } else {
+                map.put("message", "登录失败!");
             }
             response.getWriter().write(objectMapper.writeValueAsString(map));
-        }else{
+        } else {
             super.onAuthenticationFailure(request, response, exception);
         }
     }

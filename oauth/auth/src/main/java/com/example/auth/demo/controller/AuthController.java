@@ -41,7 +41,7 @@ public class AuthController {
     @PostMapping(value = "/login")
     @ApiOperation(value = "登陆", notes = "登陆成功返回token,登陆之前请先注册账号")
     public ResultJson<ResponseUserToken> login(
-            @Valid @RequestBody User user){
+            @Valid @RequestBody User user) {
         final ResponseUserToken response = authService.login(user.getName(), user.getPassword());
         return ResultJson.ok(response);
     }
@@ -49,7 +49,7 @@ public class AuthController {
     @GetMapping(value = "/logout")
     @ApiOperation(value = "登出", notes = "退出登陆")
     @ApiImplicitParams({@ApiImplicitParam(name = "Authorization", value = "Authorization token", required = true, dataType = "string", paramType = "header")})
-    public ResultJson logout(HttpServletRequest request){
+    public ResultJson logout(HttpServletRequest request) {
         String token = request.getHeader(tokenHeader);
         if (token == null) {
             return ResultJson.failure(ResultCode.UNAUTHORIZED);
@@ -61,7 +61,7 @@ public class AuthController {
     @GetMapping(value = "/user")
     @ApiOperation(value = "根据token获取用户信息", notes = "根据token获取用户信息")
     @ApiImplicitParams({@ApiImplicitParam(name = "Authorization", value = "Authorization token", required = true, dataType = "string", paramType = "header")})
-    public ResultJson getUser(HttpServletRequest request){
+    public ResultJson getUser(HttpServletRequest request) {
         String token = request.getHeader(tokenHeader);
         if (token == null) {
             return ResultJson.failure(ResultCode.UNAUTHORIZED);

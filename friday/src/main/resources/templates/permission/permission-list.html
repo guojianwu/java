@@ -29,8 +29,9 @@
 
                     <div class="layui-card-header">
                         <form class="layui-form layui-col-md12 x-so" id="layuiFormPermission">
-                            <a class="layui-btn" id="crollAll" >折叠展开</a>
-                            <a class="layui-btn" onclick="xadmin.open('新增权限','/permission/add')" permission="sys:menu:add"><i class="layui-icon"></i>新增权限</a>
+                            <a class="layui-btn" id="crollAll">折叠展开</a>
+                            <a class="layui-btn" onclick="xadmin.open('新增权限','/permission/add')"
+                               permission="sys:menu:add"><i class="layui-icon"></i>新增权限</a>
                         </form>
                     </div>
 
@@ -39,9 +40,10 @@
                     </div>
 
                     <div class="layui-card-body ">
-                        <script type="text/html" id="barDemo" >
+                        <script type="text/html" id="barDemo">
                             <a class="layui-btn layui-btn-xs" lay-event="edit" permission="sys:menu:edit">编辑</a>
-                            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del" permission="sys:menu:del">删除</a>
+                            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del"
+                               permission="sys:menu:del">删除</a>
                         </script>
                     </div>
                 </div>
@@ -63,12 +65,12 @@
         var $ = layui.jquery;
         var treetable = layui.treetable;
 
-        renderTable = function(){
+        renderTable = function () {
             treetable.render({
                 // 渲染表格
                 treeColIndex: 1,// treetable新增参数
                 treeSpid: 0,
-                treeIdName:'id',// treetable新增参数
+                treeIdName: 'id',// treetable新增参数
                 treePidName: 'parentId',     // treetable新增参数
                 treeLinkage: true,        // treetable新增参数
                 elem: '#menuTable',
@@ -76,17 +78,19 @@
                 cols: [
                     [
                         {type: 'numbers'},
-                        {field: 'name',width:180, title: '名称'},
-                        {field: 'href',width:160, title: 'url'},
-                        {field: 'sort',width:60, title: '排序'},
-                        {field:'permission',title:'资源标识'},
-                        {field:'type',width:60,title:'类型',templet:function(d){
-                            return  d.type == '1' ? "菜单":"按钮";
-                        }},
-                        {title:'操作',toolbar:'#barDemo'}
+                        {field: 'name', width: 180, title: '名称'},
+                        {field: 'href', width: 160, title: 'url'},
+                        {field: 'sort', width: 60, title: '排序'},
+                        {field: 'permission', title: '资源标识'},
+                        {
+                            field: 'type', width: 60, title: '类型', templet: function (d) {
+                                return d.type == '1' ? "菜单" : "按钮";
+                            }
+                        },
+                        {title: '操作', toolbar: '#barDemo'}
                     ]
                 ],
-                done:function(){
+                done: function () {
                     checkPermission();
                 }
             });
@@ -98,12 +102,12 @@
          */
         var croll = false;
         $("#crollAll").click(function () {
-            if(croll){
+            if (croll) {
                 treetable.expandAll('#menuTable');
-                croll=false;
-            }else{
+                croll = false;
+            } else {
                 treetable.foldAll('#menuTable');
-                croll=true;
+                croll = true;
             }
         })
 

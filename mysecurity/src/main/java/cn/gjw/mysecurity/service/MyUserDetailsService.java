@@ -27,17 +27,17 @@ public class MyUserDetailsService implements UserDetailsService {
         TbUser tbUser = tbUserService.getUserByName(s);
         System.out.println(tbUser);
 
-        List<GrantedAuthority> grantedAuthorities= Lists.newArrayList();
-        if(tbUser!=null){
+        List<GrantedAuthority> grantedAuthorities = Lists.newArrayList();
+        if (tbUser != null) {
             List<TbPermission> tbPermissions = tbPermissionService.getUserById(tbUser.getId());
             tbPermissions.forEach(tbPermission -> {
                 SimpleGrantedAuthority grantedAuthority = new SimpleGrantedAuthority(tbPermission.getEnname());
                 grantedAuthorities.add(grantedAuthority);
             });
-        }else {
+        } else {
             throw new UsernameNotFoundException("not user");
         }
-        return new User(tbUser.getUsername(),tbUser.getPassword(),grantedAuthorities);
+        return new User(tbUser.getUsername(), tbUser.getPassword(), grantedAuthorities);
 
     }
 }

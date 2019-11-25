@@ -21,6 +21,7 @@ import java.io.IOException;
 
 /**
  * token校验
+ *
  * @author: JoeTao
  * createAt: 2018/9/14
  */
@@ -51,13 +52,13 @@ public class JwtAuthenticationTokenFilter extends OncePerRequestFilter {
 
         logger.info(String.format("Checking authentication for userDetail %s.", username));
 
-        if(auth_token!=null){
+        if (auth_token != null) {
             long userIdFromToken = jwtUtils.getUserIdFromToken(auth_token);
-            if(userIdFromToken != 0){
+            if (userIdFromToken != 0) {
                 UserDetail userById = authMapper.getUserById(userIdFromToken);
-    //            System.out.println(u.getId());
-    //             System.out.println(userById);
-                if (userById !=null) {
+                //            System.out.println(u.getId());
+                //             System.out.println(userById);
+                if (userById != null) {
                     UserDetail userDetail = jwtUtils.getUserFromToken(auth_token);
                     if (jwtUtils.validateToken(auth_token, userDetail)) {
                         UsernamePasswordAuthenticationToken authentication = new UsernamePasswordAuthenticationToken(userDetail, null, userDetail.getAuthorities());

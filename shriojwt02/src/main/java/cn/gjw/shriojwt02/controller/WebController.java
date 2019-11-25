@@ -19,17 +19,17 @@ public class WebController {
     @Autowired
     private UserService userService;
 
-//    @Autowired
+    //    @Autowired
 //    public void setService(UserService userService) {
 //        this.userService = userService;
 //    }
     @PostMapping("/401")
-    public String test(){
+    public String test() {
         return "my 401";
     }
 
     @RequestMapping("/test02")
-    public String test02(){
+    public String test02() {
         return "test02";
     }
 
@@ -37,15 +37,15 @@ public class WebController {
     @PostMapping("/login")
     public ResponseBean login(@RequestBody UserBean user) throws TestEx {
         System.out.println(user);
-        if(user.getUsername()==null){
+        if (user.getUsername() == null) {
             throw new TestEx("参数错误");
         }
 
         UserBean userBean = userService.getUser(user.getUsername());
-        if(userBean==null){
+        if (userBean == null) {
             throw new TestEx("没有该用户");
         }
-        if(!userBean.getPassword().equals(user.getPassword())){
+        if (!userBean.getPassword().equals(user.getPassword())) {
             throw new TestEx("密码错误");
         }
 //        if (userBean.getPassword().equals(user.getPassword())) {
@@ -86,9 +86,9 @@ public class WebController {
     }
 
 
-//    @ResponseStatus(HttpStatus.UNAUTHORIZED)
+    //    @ResponseStatus(HttpStatus.UNAUTHORIZED)
     @RequestMapping(path = "/401")
-    public ResponseBean unauthorized()  {
+    public ResponseBean unauthorized() {
 //        throw new TestEx("fghjkl");
         return new ResponseBean(401, "Unauthorized", null);
     }

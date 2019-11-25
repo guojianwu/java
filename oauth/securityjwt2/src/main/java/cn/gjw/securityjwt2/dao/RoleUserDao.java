@@ -8,7 +8,9 @@ import java.util.List;
 @Repository
 public interface RoleUserDao {
     int save(SysRoleUser sysRoleUser);
+
     int updateByUserId(SysRoleUser sysRoleUser);
+
     int deleteByUserId(Integer userId);
 
 

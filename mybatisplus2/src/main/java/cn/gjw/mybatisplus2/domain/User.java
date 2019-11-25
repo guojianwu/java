@@ -7,9 +7,11 @@ import com.baomidou.mybatisplus.annotation.TableName;
 import lombok.Data;
 import org.springframework.data.annotation.Id;
 
+import java.io.Serializable;
+
 @Data
 @TableName("user3")
-public class User {
+public class User implements Serializable {
     @TableId(type = IdType.AUTO)
     private Long id;
     private String name;

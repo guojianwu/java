@@ -11,22 +11,22 @@
             <result column="name" property="name"></result>
             <result column="permission" property="permission"></result>
         </collection>
-     </resultMap>
+    </resultMap>
     <select id="getUserByUsername" resultMap="myAuth">
         SELECT
-            u.*,
-            p.*
+        u.*,
+        p.*
         FROM
-            sys_user u
-            LEFT JOIN sys_role_user ru ON u.id = ru.userId
-            LEFT JOIN sys_role r ON r.id = ru.roleId
-            LEFT JOIN sys_role_permission rp ON r.id = rp.roleId
-            LEFT JOIN sys_permission p ON p.id = rp.permissionId
+        sys_user u
+        LEFT JOIN sys_role_user ru ON u.id = ru.userId
+        LEFT JOIN sys_role r ON r.id = ru.roleId
+        LEFT JOIN sys_role_permission rp ON r.id = rp.roleId
+        LEFT JOIN sys_permission p ON p.id = rp.permissionId
         WHERE
-            u.username =#{name}
+        u.username =#{name}
 
     </select>
     <select id="getUserById" resultType="cn.gjw.firday.domain.auth.Auth">
-          SELECT * from  sys_user where id= #{id}
+        SELECT * from sys_user where id= #{id}
     </select>
 </mapper>

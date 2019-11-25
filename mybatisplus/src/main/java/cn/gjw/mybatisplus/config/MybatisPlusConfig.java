@@ -14,6 +14,7 @@ public class MybatisPlusConfig {
     public PerformanceInterceptor performanceInterceptor() {
         return new PerformanceInterceptor();
     }
+
     /**
      * 分页插件
      */

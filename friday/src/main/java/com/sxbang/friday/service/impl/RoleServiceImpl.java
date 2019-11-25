@@ -21,8 +21,8 @@ import java.util.List;
 @Slf4j
 public class RoleServiceImpl implements RoleService {
 
-	@Autowired
-	private RoleDao roleDao;
+    @Autowired
+    private RoleDao roleDao;
 
     @Autowired
     RolePermissionDao rolePermissionDao;
@@ -30,15 +30,15 @@ public class RoleServiceImpl implements RoleService {
     @Autowired
     private RoleUserDao roleUserDao;
 
-	@Override
-	public Results<SysRole> getAllRoles() {
-		return Results.success(50, roleDao.getAllRoles());
-	}
+    @Override
+    public Results<SysRole> getAllRoles() {
+        return Results.success(50, roleDao.getAllRoles());
+    }
 
-	@Override
-	public Results<SysRole> getAllRolesByPage(Integer offset, Integer limit) {
+    @Override
+    public Results<SysRole> getAllRolesByPage(Integer offset, Integer limit) {
         return Results.success(roleDao.countAllRoles().intValue(), roleDao.getAllRolesByPage(offset, limit));
-	}
+    }
 
     @Override
     public Results<SysRole> save(RoleDto roleDto) {
@@ -74,9 +74,9 @@ public class RoleServiceImpl implements RoleService {
         //3、更新角色表
         int countData = roleDao.update(roleDto);
 
-        if(countData > 0){
+        if (countData > 0) {
             return Results.success();
-        }else{
+        } else {
             return Results.failure();
         }
     }
@@ -84,15 +84,15 @@ public class RoleServiceImpl implements RoleService {
     @Override
     public Results delete(Integer id) {
         List<SysRoleUser> datas = roleUserDao.listAllSysRoleUserByRoleId(id);
-        if(datas.size() <= 0){
+        if (datas.size() <= 0) {
             roleDao.delete(id);
             return Results.success();
         }
-        return Results.failure(ResponseCode.USERNAME_REPEAT.USER_ROLE_NO_CLEAR.getCode(),ResponseCode.USERNAME_REPEAT.USER_ROLE_NO_CLEAR.getMessage());
+        return Results.failure(ResponseCode.USERNAME_REPEAT.USER_ROLE_NO_CLEAR.getCode(), ResponseCode.USERNAME_REPEAT.USER_ROLE_NO_CLEAR.getMessage());
     }
 
     @Override
     public Results<SysRole> getRoleByFuzzyRoleNamePage(String roleName, Integer startPosition, Integer limit) {
-        return Results.success(roleDao.countRoleByFuzzyRoleName(roleName).intValue(), roleDao.getRoleByFuzzyRoleNamePage(roleName,startPosition, limit));
+        return Results.success(roleDao.countRoleByFuzzyRoleName(roleName).intValue(), roleDao.getRoleByFuzzyRoleNamePage(roleName, startPosition, limit));
     }
 }

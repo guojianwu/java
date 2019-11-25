@@ -2,8 +2,8 @@ var str = $(".forbidden-tip").html();
 var i = 0;
 $(".forbidden-tip").html("");
 
-setTimeout(function() {
-    var se = setInterval(function() {
+setTimeout(function () {
+    var se = setInterval(function () {
         i++;
         $(".forbidden-tip").html(str.slice(0, i) + "|");
         if (i == str.length) {
@@ -11,4 +11,4 @@ setTimeout(function() {
             $(".forbidden-tip").html(str);
         }
     }, 10);
-},0);
+}, 0);

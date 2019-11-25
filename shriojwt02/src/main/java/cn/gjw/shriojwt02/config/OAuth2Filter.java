@@ -47,8 +47,8 @@ public class OAuth2Filter extends AuthenticatingFilter {
 //            String json = new Gson().toJson(R.error(HttpStatus.SC_UNAUTHORIZED, "invalid token"));
 //
 //            httpResponse.getWriter().print(json);
-                HttpServletResponse response = (HttpServletResponse) servletResponse;
-                response.sendRedirect("/401");
+            HttpServletResponse response = (HttpServletResponse) servletResponse;
+            response.sendRedirect("/401");
 //            throw new TestEx("ssss");
             return false;
         }
@@ -66,7 +66,7 @@ public class OAuth2Filter extends AuthenticatingFilter {
         } catch (IOException e1) {
             e1.printStackTrace();
         }
-        return  false;
+        return false;
 //        return super.onLoginFailure(token, e, request, response);
 
     }

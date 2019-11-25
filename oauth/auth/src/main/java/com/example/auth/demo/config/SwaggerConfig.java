@@ -20,7 +20,7 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @Configuration
 public class SwaggerConfig {
 
-    private Contact contact = new Contact("Joetao","localhost:8080/swagger-ui.html", "cutesimba@163.com");
+    private Contact contact = new Contact("Joetao", "localhost:8080/swagger-ui.html", "cutesimba@163.com");
 
     @Bean
     public Docket createRestApi() {

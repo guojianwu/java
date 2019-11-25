@@ -63,11 +63,11 @@
             <artifactId>spring-boot-devtools</artifactId>
         </dependency>
         <!-- https://mvnrepository.com/artifact/org.springframework.boot/spring-boot-configuration-processor -->
-<!--        <dependency>-->
-<!--            <groupId>org.springframework.boot</groupId>-->
-<!--            <artifactId>spring-boot-configuration-processor</artifactId>-->
-<!--&lt;!&ndash;            <version>2.1.8.RELEASE</version>&ndash;&gt;-->
-<!--        </dependency>-->
+        <!--        <dependency>-->
+        <!--            <groupId>org.springframework.boot</groupId>-->
+        <!--            <artifactId>spring-boot-configuration-processor</artifactId>-->
+        <!--&lt;!&ndash;            <version>2.1.8.RELEASE</version>&ndash;&gt;-->
+        <!--        </dependency>-->
 
     </dependencies>
 

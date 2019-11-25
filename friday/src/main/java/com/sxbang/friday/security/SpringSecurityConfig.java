@@ -49,11 +49,11 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                         "/xadmin/**",
                         "/ztree/**",
                         "/statics/**"
-                        )
+                )
                 .permitAll()
                 .anyRequest()
                 .authenticated()
-                ;
+        ;
         //解决X-Frame-Options DENY问题
         httpSecurity.headers().frameOptions().sameOrigin();
         httpSecurity.formLogin()
@@ -61,7 +61,7 @@ public class SpringSecurityConfig extends WebSecurityConfigurerAdapter {
                 .loginProcessingUrl("/login")
                 .successHandler(myAuthenticationSuccessHandler)
                 .failureHandler(myAuthenctiationFailureHandler)
-        .and().logout().permitAll().invalidateHttpSession(true).
+                .and().logout().permitAll().invalidateHttpSession(true).
                 deleteCookies("JSESSIONID").logoutSuccessHandler(myLogoutSuccessHandler)
         ;
         //异常处理

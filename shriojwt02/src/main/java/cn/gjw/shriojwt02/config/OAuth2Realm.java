@@ -23,6 +23,7 @@ import java.util.Set;
 public class OAuth2Realm extends AuthorizingRealm {
     @Autowired
     private UserService userService;
+
     @Override
     public boolean supports(AuthenticationToken token) {
         return token instanceof JWTToken;
@@ -58,7 +59,7 @@ public class OAuth2Realm extends AuthorizingRealm {
             throw new AuthenticationException("User didn't existed!");
         }
 
-        if (! JWTUtil.verify(token, username, userBean.getPassword())) {
+        if (!JWTUtil.verify(token, username, userBean.getPassword())) {
             throw new AuthenticationException("Username or password error");
         }
 

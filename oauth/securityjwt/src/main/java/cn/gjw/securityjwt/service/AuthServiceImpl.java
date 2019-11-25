@@ -33,7 +33,7 @@ public class AuthServiceImpl implements AuthService {
 //    private final UserDetailsService userDetailsService;
 
 
-//    private final JwtUtils jwtTokenUtil;
+    //    private final JwtUtils jwtTokenUtil;
     @Autowired
     private AuthenticationManager authenticationManager;
     @Autowired
@@ -61,7 +61,7 @@ public class AuthServiceImpl implements AuthService {
     @Override
     public UserDetail register(UserDetail userDetail) {
         final String username = userDetail.getUsername();
-        if(authDao.findByUsername(username)!=null) {
+        if (authDao.findByUsername(username) != null) {
             throw new CustomException(ResultJson.failure(ResultCode.BAD_REQUEST, "用户已存在"));
         }
         BCryptPasswordEncoder encoder = new BCryptPasswordEncoder();
@@ -103,8 +103,8 @@ public class AuthServiceImpl implements AuthService {
         String token = oldToken.substring(tokenHead.length());
         String username = jwtTokenUtil.getUsernameFromToken(token);
         UserDetail userDetail = (UserDetail) myUserDetailsService.loadUserByUsername(username);
-        if (jwtTokenUtil.canTokenBeRefreshed(token, userDetail.getLastPasswordResetDate())){
-            token =  jwtTokenUtil.refreshToken(token);
+        if (jwtTokenUtil.canTokenBeRefreshed(token, userDetail.getLastPasswordResetDate())) {
+            token = jwtTokenUtil.refreshToken(token);
             return new ResponseUserToken(token, userDetail);
         }
         return null;
